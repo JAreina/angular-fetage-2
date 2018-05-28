@@ -9,7 +9,7 @@ export class CocheComponent implements OnInit {
    
    
    public coches :Coche[];
-
+   public coche : Coche;
    
 
   constructor(  ) { 

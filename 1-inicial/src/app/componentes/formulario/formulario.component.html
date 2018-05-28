@@ -54,28 +54,34 @@
                          <div class="col-md-4 mb-3">
                            <label for="titulo">Marca</label>
                            <input type="text" class="form-control" id="titulo" 
-                           placeholder="título" value="" required campo="campo">
+                           placeholder="Selecciona tu marca preferida" value="" required campo="campo">
                          </div>
                          <div class="col-md-4 mb-3">
-                           <label for="director">DIRECTOR</label>
+                           <label for="director">Modelo</label>
                            <input type="text" class="form-control" id="director" 
-                           placeholder="director" value="" required campo="campo">
+                           placeholder="Escoge tu modelo" value="" required campo="campo">
                          </div>
                          <div class="col-md-4 mb-3">
-                           <label for="genero">GENERO</label>
+                           <label for="genero">Potencia</label>
                           
                          
                              <input type="text" class="form-control" id="genero" 
-                             placeholder="genero" aria-describedby="inputGroupPrepend2" required
+                             placeholder="Elige la potencia" aria-describedby="inputGroupPrepend2" required
                              campo="campo">
                         
                          </div>
                        </div>
                        <div class="form-row">
                          <div class="col-md-6 mb-3">
-                           <label for="anio">AÑO</label>
-                           <input type="text" class="form-control" id="anio" 
-                           placeholder="año" required campo="campo">
+                           <label for="anio">Colores</label>
+                           <datalist id="colors">
+                             <option value="Rojo"></option>
+                             <option value="Verde"></option>
+                             <option value="Azul"></option>
+                             <option value="Gold"></option>
+                           </datalist>
+                           <input type="text" list="colors" class="form-control" id="anio" 
+                           placeholder="Elige el color favorito" required campo="campo">
                          </div>
                         
                        </div>
