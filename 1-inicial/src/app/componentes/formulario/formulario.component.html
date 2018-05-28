@@ -1,5 +1,8 @@
-<h1 class="text-center"> PELICULAS </h1>
-<marquee> <h2><mark>formulario</mark></h2></marquee>
+
+<div *ngIf="coche">
+
+<h1 class="text-center"> </h1>
+<marquee behavior="slide" direction="up" loop="10"> <h2><mark>formulario</mark></h2></marquee>
 
    <div class="d-flex justify-content-center mb-1">
 
@@ -38,50 +41,44 @@
 <div class="container">
    
 
-
-   
-   
-
    <div class="row">
        <div class="col-xs-12 col-sm-12 col-lg-12">
                <form  id="formulario">
                        <div class="form-row">
-                           <div class="col-md-4 mb-3">
+                           <div>
                                
                                <input type="hidden" class="form-control" id="id" 
                               value=""  campo="campo">
                              </div>
                          <div class="col-md-4 mb-3">
-                           <label for="titulo">Marca</label>
-                           <input type="text" class="form-control" id="titulo" 
+                           <label for="marca">Marca</label>
+                           <input type="text" class="form-control" id="marca" [(ngModel)]="coche.marca" 
                            placeholder="Selecciona tu marca preferida" value="" required campo="campo">
                          </div>
                          <div class="col-md-4 mb-3">
-                           <label for="director">Modelo</label>
-                           <input type="text" class="form-control" id="director" 
+                           <label for="modelo">Modelo</label>
+                           <input type="text" class="form-control" id="modelo" [(ngModel)]="coche.modelo" 
                            placeholder="Escoge tu modelo" value="" required campo="campo">
                          </div>
                          <div class="col-md-4 mb-3">
-                           <label for="genero">Potencia</label>
+                           <label for="potencia">Potencia</label>
                           
                          
-                             <input type="text" class="form-control" id="genero" 
+                             <input type="text" class="form-control" id="potencia" [(ngModel)]="coche.potencia" 
                              placeholder="Elige la potencia" aria-describedby="inputGroupPrepend2" required
                              campo="campo">
                         
                          </div>
                        </div>
                        <div class="form-row">
-                         <div class="col-md-6 mb-3">
-                           <label for="anio">Colores</label>
+                         <div class="col-md-4 mb-3">
+                           <label for="carroceria">Carroceria</label>
                            <datalist id="colors">
-                             <option value="Rojo"></option>
-                             <option value="Verde"></option>
-                             <option value="Azul"></option>
-                             <option value="Gold"></option>
+                             <option *ngFor= "let carro of carrocerias" value="{{carro}}"></option>
+                             
                            </datalist>
-                           <input type="text" list="colors" class="form-control" id="anio" 
-                           placeholder="Elige el color favorito" required campo="campo">
+                           <input type="text" list="colors" class="form-control" id="carroceria" 
+                           placeholder="Elige tu carroceria favorita" required campo="campo">
                          </div>
                         
                        </div>
@@ -92,5 +89,6 @@
        </div>
        
    </div>
+</div>
 </div>
 <div id="tabla"></div>

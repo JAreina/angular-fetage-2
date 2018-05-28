@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ServicioCarroceria} from '../../servicios/carroceria.servicio';
+import { Coche } from '../../entidades/coche';
+
 
 @Component({
   selector: 'app-formulario',
@@ -7,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  public carrocerias : string[];
+  public coche: Coche;
+
+  private servicioCarrocerias = new ServicioCarroceria();
+
+  constructor() { 
+       this.carrocerias= [];
+       this.carrocerias = this.servicioCarrocerias.listar();
+  }
 
   ngOnInit() {
   }

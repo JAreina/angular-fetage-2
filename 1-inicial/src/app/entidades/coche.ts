@@ -5,7 +5,7 @@ export class Coche {
                 public marca:string,
                 public modelo:string,
                 public potencia:string,
-                public colores:string[]){
+                public carroceria:string){
 
     }
 }

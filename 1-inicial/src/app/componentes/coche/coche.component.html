@@ -1,11 +1,11 @@
 
-<marquee><H2><mark>Listado</mark></H2></marquee>
+<marquee behavior="slide" direction="up" loop="10"><H2><mark>Listado</mark></H2></marquee>
 
 <div id="mensaje"></div>
 
 <div class="d-flex justify-content-center mb-1">
         <div class="p-2 bd-highlight">
-             <button id="botonNuevo" class="btn btn-outline-secondary" 
+             <button id="botonNuevo" class="btn btn-outline-secondary" (click)="insertar()"
            >NUEVO</button>
             </div>
             <div class="p-2 bd-highlight">
@@ -36,15 +36,25 @@
         <table id="table" class="table">
             <thead class="thead-dark">
               <tr>
+                   <th>ID</th>
                     <th scope="col">MARCA</th>
                 <th scope="col">MODELO</th>
                 <th scope="col">POTENCIA</th>
-                <th scope="col">COLORES</th>
+                <th scope="col">CARROCERIAS</th>
                 
               </tr>
             </thead>
             <tbody id="tableBody">
-              
+              <tr *ngFor= "let c of coches" (click)="buscar(c.id)">
+                   <td>{{c.id}}</td>
+                   <td>{{c.marca}}</td>
+                   <td>{{c.modelo}}</td>
+                   <td>{{c.potencia}}</td>
+                   <td>{{c.carroceria}}</td>
+                   <td>
+                     <span *ngFor="let carr of c.carrocerias">{{carr+" "}}</span>
+                   </td>
+              </tr>
               
             </tbody>
           </table>
@@ -53,3 +63,102 @@
 </div>
 </div>
 <div id="tabla"></div>
+
+
+
+<!---->
+<div *ngIf="coche">
+  <h1 class="text-center"> </h1>
+  <marquee behavior="slide" direction="up" loop="10"> <h2><mark>formulario</mark></h2></marquee>
+  
+     <div class="d-flex justify-content-center mb-1">
+  
+             <div class="p-2 bd-highlight">
+                  <button id="botonInsertar" class="btn btn-outline-success" (click)="guardar()"
+                >INSERTAR</button>
+                 </div>
+                 <div class="p-2 bd-highlight">
+                         <button id="botonModificar" class="btn btn-outline-warning" (click)="modificar()"
+                       >MODIFICAR</button>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                             <button id="botonBorrar" class="btn btn-outline-danger" (click)="borrar()"
+                           >BORRAR</button>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                 <button id="botonVaciar" class="btn btn-outline-info" (click)="vaciar()"
+                               >VACIAR</button>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                     <button id="botonCancelar" class="btn btn-outline-primary"  (click)="cancelar()"
+                                   >CANCELAR</button>
+                                    </div>
+           </div>
+     
+     
+          
+   <div class="container">
+             <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-lg-12">
+                
+                 </div>
+     </div>
+  
+  </div>
+  <div class="container">
+     
+  
+     <div class="row">
+         <div class="col-xs-12 col-sm-12 col-lg-12">
+                 <section id="formulario">
+                         <div class="form-row">
+                             <div>
+                                 
+                                 <input type="text" class="form-control" id="id" [(ngModel)]="coche.id"
+                                value=""  campo="campo">
+                               </div>
+                           <div class="col-md-4 mb-3">
+                             <label for="marca">Marca</label>
+                             <input type="text" class="form-control" id="marca" [(ngModel)]="coche.marca" 
+                             placeholder="Selecciona tu marca preferida" value="" required campo="campo">
+                           </div>
+                           <div class="col-md-4 mb-3">
+                             <label for="modelo">Modelo</label>
+                             <input type="text" class="form-control" id="modelo" [(ngModel)]="coche.modelo" 
+                             placeholder="Escoge tu modelo" value="" required campo="campo">
+                           </div>
+                           <div class="col-md-4 mb-3">
+                             <label for="potencia">Potencia</label>
+                            
+                           
+                               <input type="text" class="form-control" id="potencia" [(ngModel)]="coche.potencia" 
+                               placeholder="Elige la potencia" aria-describedby="inputGroupPrepend2" required
+                               campo="campo">
+                          
+                           </div>
+                         </div>
+                         <div class="form-row">
+                           <div class="col-md-4 mb-3">
+                             <label for="carroceria">Carroceria</label>
+
+
+                             <select id="colors" class="form-control" [(ngModel)]="coche.carroceria">
+
+                               <option *ngFor= "let carro of carroceria" [value]="carro" >
+                                 {{carro}}</option>
+                               
+                             </select>
+                            
+                           </div>
+                          
+                         </div>
+                    
+                         
+                        
+                        </section>
+         </div>
+         
+     </div>
+  </div>
+  </div>
+  <div id="tabla"></div>
