@@ -13,6 +13,7 @@ import { ServicioAppService } from './servicios/servicioapp.service';
 import { Servicio1Hijo1Service } from './servicios/servicio1hijo1.service';
 import { Servicio2Service } from './servicios/servicio2.service';
 import { Servicio2Hijo2Service } from './servicios/servicio2hijo2.service';
+import { PadreToterComponent } from './componentes/padre-toter/padre-toter.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'pagina1', component: Pagina1Component },
   { path: 'pagina2', component: Pagina2Component },
   { path: 'pagina2/:datos1/:datos2', component: Pagina2Component },
+  { path: 'padreTotal', component: PadreToterComponent },
   { path: '*', component: AppComponent }
 ];
 
@@ -33,6 +35,7 @@ const routes: Routes = [
     CabeceraComponent,
     Hijo1Component,
     Hijo2Component,
+    PadreToterComponent,
     
   ],
   imports: [
