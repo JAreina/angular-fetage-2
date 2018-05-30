@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="./bootstrap.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./jquery.js"></script>
+    <script src="./listadoPeliculas.js"></script>
+</head>
+<body>
+
+
+        <h1 class="text-center"> PELICULAS </h1>
+     <marquee> <h2><mark>formulario</mark></h2></marquee>
+
+        <div class="d-flex justify-content-center mb-1">
+     
+                <div class="p-2 bd-highlight">
+                     <button id="botonInsertar" class="btn btn-outline-success" 
+                   >INSERTAR</button>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                            <button id="botonModificar" class="btn btn-outline-warning" 
+                          >MODIFICAR</button>
+                           </div>
+                           <div class="p-2 bd-highlight">
+                                <button id="botonBorrar" class="btn btn-outline-danger" 
+                              >BORRAR</button>
+                               </div>
+                               <div class="p-2 bd-highlight">
+                                    <button id="botonVaciar" class="btn btn-outline-info" 
+                                  >VACIAR</button>
+                                   </div>
+                                   <div class="p-2 bd-highlight">
+                                        <button id="botonCancelar" class="btn btn-outline-primary" 
+                                      >CANCELAR</button>
+                                       </div>
+              </div>
+        
+        
+        
+      <div class="container">
+                <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                   
+                    </div>
+        </div>
+    
+    </div>
+    <div class="container">
+        
+  
+
+        
+        
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <form  id="formulario">
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    
+                                    <input type="hidden" class="form-control" id="id" 
+                                   value=""  campo="campo">
+                                  </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="titulo">TITULO</label>
+                                <input type="text" class="form-control" id="titulo" 
+                                placeholder="título" value="" required campo="campo">
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="director">DIRECTOR</label>
+                                <input type="text" class="form-control" id="director" 
+                                placeholder="director" value="" required campo="campo">
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="genero">GENERO</label>
+                               
+                              
+                                  <input type="text" class="form-control" id="genero" 
+                                  placeholder="genero" aria-describedby="inputGroupPrepend2" required
+                                  campo="campo">
+                             
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="anio">AÑO</label>
+                                <input type="text" class="form-control" id="anio" 
+                                placeholder="año" required campo="campo">
+                              </div>
+                             
+                            </div>
+                            
+                            
+                           
+                          </form>
+            </div>
+            
+        </div>
+    </div>
+    <div id="tabla"></div>
+</body>
+</html>

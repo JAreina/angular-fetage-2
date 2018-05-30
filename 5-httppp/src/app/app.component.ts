@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HTTP';
+  title = 'PELICULAS 10000';
 }
+/***
+ * 
+ * COMPONENTES :  cabecera
+ *                menu,
+ *                pie 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
