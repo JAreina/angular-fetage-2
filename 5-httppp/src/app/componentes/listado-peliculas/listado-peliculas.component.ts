@@ -11,11 +11,12 @@ export class ListadoPeliculasComponent implements OnInit {
 
    arryPeliculas : Pelicula[];
    
-  constructor(private peliServ: PeliculaService, private http:Http) { }
+  constructor(private peliServ: PeliculaService) { }
 
   ngOnInit() {
     this.arryPeliculas = [];
-         this.getPeliculas();
+        this.arryPeliculas=  this.peliServ.getPeliculas();
+        console.log(this.arryPeliculas)
   }
 
   getPeliculas(){
@@ -25,7 +26,7 @@ export class ListadoPeliculasComponent implements OnInit {
 
 
   getPelis(){
-    let observable = this.http.get("url");
-    observable.
+    let observable;
+  
   }
 }

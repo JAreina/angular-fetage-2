@@ -17,16 +17,16 @@ export class PeliculaService {
  getPeliculas():any{
    let url:string = "http://localhost:3999/peliculas";
 
-    this.http.get<Pelicula>(url)
+    this.http.get<Pelicula[]>(url)
                    .subscribe(data => {   // data is already a JSON object
                        console.log(data);
-                       this.arryPeliculas.push(data);
-                       return this.arryPeliculas;
+                   this.arryPeliculas= data;
+                       return data;
                        
   });
    
 
- 
+ return this.arryPeliculas;
  }
 
 
