@@ -16,15 +16,16 @@ export class ListadoPeliculasComponent implements OnInit {
 
   ngOnInit() {
         this.arryPeliculas=[];
-         this.arryPeliculas = this.peliServ.getPeliculas();
+         this.arryPeliculas = this.getPeliculas();
          console.log("vista listado ");
        console.log(this.arryPeliculas);
   }
 
   getPeliculas(){
        this.arryPeliculas = this.peliServ.getPeliculas();
-       console.log("vista listado ");
+       console.log("vista listado ddddddddddd");
        console.log(this.arryPeliculas);
+       return this.arryPeliculas;
   }
 
 
