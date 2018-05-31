@@ -18,20 +18,18 @@ export class PeliculaService {
  getPeliculas():any{
    let url:string = "http://localhost:3999/peliculas";
 
-     this.http.get<Pelicula[]>(url)
-                   .subscribe(
-                   
-                   data => {   // data is already a JSON object
+    this.http.get<Pelicula[]>(url)
+                   .subscribe(data => {   // data is already a JSON object
                        console.log(data);
-                      this.arryPeliculas= data;
-                     return data;
+                   this.arryPeliculas= data;
+                       return data;
                        
                  }, error =>{
                          console.log(error)
                   });
    
 
-                  //return this.arryPeliculas;             
+ return this.arryPeliculas;
  }
 
 
