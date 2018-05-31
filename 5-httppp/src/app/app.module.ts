@@ -9,7 +9,7 @@ import { ListadoPeliculasComponent } from './componentes/listado-peliculas/lista
 import { FormularioPeliculasComponent } from './componentes/formulario-peliculas/formulario-peliculas.component';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './componentes/inicio/inicio.component';
-
+import {FormsModule} from '@angular/forms'
 
 
 import {PeliculaService} from './servicios/pelicula.service';
@@ -38,9 +38,9 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,FormsModule
   ],
-  providers: [],
+  providers: [PeliculaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

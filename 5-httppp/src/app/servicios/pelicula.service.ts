@@ -2,38 +2,34 @@ import { Injectable } from '@angular/core';
 
 import { Pelicula } from '../entidades/Pelicula';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
-
+import { Observable } from 'rxjs';
+import { ConfiguracionService } from './configuracion.service';
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class PeliculaService {
+	arryPeliculas: Pelicula[] = [];
 
+	constructor(private http: HttpClient, private config: ConfiguracionService) {
+		console.log(this);
+	}
 
-   arryPeliculas: Pelicula[] = [];
+	getPeliculas(): Observable<Pelicula[]> {
+		return this.http.get<Pelicula[]>(this.config.url + '/peliculas');
+	}
 
-  constructor(private http: HttpClient) { }
+	buscarPelicula(id: number): Observable<any> {
+		return this.http.get(this.config.url + '/peliculas/' + id);
+	}
 
+	insertarPelicula(pelicula: Pelicula): Observable<any> {
+		return this.http.post(this.config.url + '/peliculas', pelicula);
+	}
+	modificarPelicula(pelicula: Pelicula): Observable<any> {
+		return this.http.put(this.config.url + '/peliculas/' + pelicula.id, pelicula);
+	}
 
- getPeliculas():any{
-   let url:string = "http://localhost:3999/peliculas";
-
-    this.http.get<Pelicula[]>(url)
-                   .subscribe(data => {   // data is already a JSON object
-                       console.log(data);
-                   this.arryPeliculas= data;
-                       return data;
-                       
-                 }, error =>{
-                         console.log(error)
-                  });
-   
-
- return this.arryPeliculas;
- }
-
-
- 
+	borrarPelicula(pelicula: Pelicula): Observable<any> {
+		return this.http.delete(this.config.url + '/peliculas/' + pelicula.id);
+	}
 }
-
-

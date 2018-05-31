@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculaService } from '../../servicios/pelicula.service';
 import { Pelicula } from '../../entidades/Pelicula';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,23 +12,47 @@ import { Pelicula } from '../../entidades/Pelicula';
 export class ListadoPeliculasComponent implements OnInit {
 
    arryPeliculas : Pelicula[];
-   
-  constructor(private peliServ: PeliculaService) { }
+   peli: Pelicula;
+
+  constructor(private peliServ: PeliculaService,
+               private router: Router) {
+      this.arryPeliculas=[]; 
+         this.getPeliculas();
+        console.log(this.arryPeliculas)
+   }
 
   ngOnInit() {
-    this.arryPeliculas = [];
-        this.arryPeliculas=  this.peliServ.getPeliculas();
-        console.log(this.arryPeliculas)
+    //this.arryPeliculas = [];
+        
   }
 
   getPeliculas(){
-       this.arryPeliculas = this.peliServ.getPeliculas();
+       this.peliServ.getPeliculas().subscribe(
+         
+        data => {  
+                console.log(data);
+                console.log(this)
+                this.arryPeliculas= data;
+       }, error =>{
+          console.log(error)
+   });
+;
        console.log("vista listado ddddddddddd");
        console.log(this.arryPeliculas);
-       return this.arryPeliculas;
+       
   }
 
-
+  crearOModificarPeli(){
+     this.router.navigate(["/formulario"]);
+  }
 
   
+
+  modificarPelicula(pelicula){
+       console.log(pelicula);
+       //guardar objeto a modificar en localStorage
+       localStorage.setItem("peliModificar",JSON.stringify(pelicula));
+
+        this.crearOModificarPeli();
+  }
 }
