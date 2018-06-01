@@ -1,21 +1,26 @@
 
-<marquee> <h2><mark>formulario</mark></h2></marquee>
+<marquee behavior="slide" direction="up" loop="10"> <h2><mark>formulario</mark></h2></marquee>
 
    <div class="d-flex justify-content-center mb-1">
-
+      <div id="mensaje" *ngIf="mensaje != null">{{mensaje}}</div>
            <div class="p-2 bd-highlight">
+
+            <!--  [disabled]="peli.id !=null"-->
                 <button id="botonInsertar" 
-                (click)="insertar()"
+                (click)="insertar()" [disabled]="estaHabilitadoInsertar"
                 class="btn btn-outline-success" 
               >INSERTAR</button>
                </div>
                <div class="p-2 bd-highlight">
+
+                 <!--  [disabled]="peli.id ==null"-->
                        <button id="botonModificar" 
-                       (click)="modificar()"
+                       (click)="modificar()" [disabled]="estaHabilitadoModificar"
                        class="btn btn-outline-warning" 
                      >MODIFICAR</button>
                       </div>
                       <div class="p-2 bd-highlight">
+                        <!--  [disabled]="peli.id ==null"-->
                            <button id="botonBorrar" 
                            (click)="borrar()"
                            class="btn btn-outline-danger" 
@@ -56,7 +61,7 @@
        <div class="col-xs-12 col-sm-12 col-lg-12">
                <div  id="formulario">
                        <div class="form-row">
-                           <div class="col-md-4 mb-3">
+                           <div >
                            
                                <input type="hidden" class="form-control" id="id" 
                               value=""  [(ngModel)]="peli.id">

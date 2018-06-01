@@ -100,10 +100,10 @@ function insertarPelicula(req,res){
 
      if(mensaje == 'OK'){
         res.status(201)
-        res.send("PELICULA INSERTADA OK")
+        res.send("Pelicula guardada correctamente")
      }else{
         res.status(400)
-        res.send("FALLO AL INSERTAR ");
+        res.send("No se ha guardado correctamente");
      } 
 }
 
@@ -117,10 +117,10 @@ function modificarPelicula(req,res){
 
      if(mensaje == 'OK'){
         res.status(201);
-        res.send("PELICULA MODIFICADA");
+        res.send("Película modificado correctamente");
      }else{
         res.status(400)
-        res.send("NO MODIFICADO");
+        res.send(mensaje);
      }
     
 
@@ -133,10 +133,10 @@ function borrarPelicula(req,res){
 
     if(mensaje == 'OK'){
         res.status(201)
-        res.send("bien");
+        res.send("Película borrada correctamente");
      }else{
         res.status(400)
-        res.send("NO BORRADO");
+        res.send("No se ha podido borrar correctamente");
      }
 }
 

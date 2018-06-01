@@ -2,3 +2,7 @@
 body{
     background-color:rgb(80, 77, 77);
 }
+
+#mensaje{
+    color:red;
+}

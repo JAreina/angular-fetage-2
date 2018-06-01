@@ -4,6 +4,7 @@ import { Pelicula } from '../../entidades/Pelicula';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-listado-peliculas',
   templateUrl: './listado-peliculas.component.html',
@@ -13,6 +14,7 @@ export class ListadoPeliculasComponent implements OnInit {
 
    arryPeliculas : Pelicula[];
    peli: Pelicula;
+   public mensaje : any;
 
   constructor(private peliServ: PeliculaService,
                private router: Router) {
@@ -23,7 +25,23 @@ export class ListadoPeliculasComponent implements OnInit {
 
   ngOnInit() {
     //this.arryPeliculas = [];
-        
+     this.mensaje = null;
+  
+       if( localStorage.getItem("mensaje")){
+         this.mensaje = localStorage.getItem("mensaje");
+            if(this.mensaje)
+            setTimeout(()=>{
+              this.borrarMensaje();
+            },2000)
+       }
+
+   
+  }
+
+
+  borrarMensaje(){
+     this.mensaje = "";
+     localStorage.removeItem("mensaje");
   }
 
   getPeliculas(){
@@ -54,5 +72,6 @@ export class ListadoPeliculasComponent implements OnInit {
        localStorage.setItem("peliModificar",JSON.stringify(pelicula));
 
        this.router.navigate(["/formulario/",pelicula.id]);
+       //this.borrarMensaje();
   }
 }

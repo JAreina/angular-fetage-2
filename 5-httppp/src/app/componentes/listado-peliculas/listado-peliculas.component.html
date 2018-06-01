@@ -1,7 +1,9 @@
 
-        <marquee><H2><mark>Listado</mark></H2></marquee>
+        <marquee behavior="slide" direction="up" loop="10"> 
+            <H2><mark>Listado</mark></H2>
+        </marquee>
 
-        <div id="mensaje"></div>
+        <div id="mensaje" *ngIf="mensaje != null">{{mensaje}}</div>
 
         <div class="d-flex justify-content-center mb-1">
          <div class="p-2 bd-highlight">
@@ -38,7 +40,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-12">
                 <table id="table" class="table">
-                    <thead class="thead-dark">
+                    <thead class="thead-dark" *ngIf="arryPeliculas.length > 0">
                       <tr>
                             <th scope="col">ID</th>
                         <th scope="col">TITULO</th>

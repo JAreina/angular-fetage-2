@@ -48,7 +48,7 @@ exports.buscarPelicula = function(id) {
 
 exports.modificarPelicula = function(pelicula) {
 
-    if(pelicula.titulo.trim()== ''){
+    if(pelicula.titulo || pelicula.titulo.trim()== ''){
         return "TITULO OBLIGATORIO";
     }
     for(let i =0;i<peliculas.length;i++){
