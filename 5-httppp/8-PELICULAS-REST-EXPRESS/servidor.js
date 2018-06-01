@@ -64,7 +64,9 @@ const path = require("path");
 
     
 
-
+/**
+ * funciones logica control para api REST CON ANGULAR 
+ */
   
 
   //      LISTAR PELICULAS 

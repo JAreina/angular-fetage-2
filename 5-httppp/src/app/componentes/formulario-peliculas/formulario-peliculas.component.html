@@ -10,19 +10,27 @@
               >INSERTAR</button>
                </div>
                <div class="p-2 bd-highlight">
-                       <button id="botonModificar" class="btn btn-outline-warning" 
+                       <button id="botonModificar" 
+                       (click)="modificar()"
+                       class="btn btn-outline-warning" 
                      >MODIFICAR</button>
                       </div>
                       <div class="p-2 bd-highlight">
-                           <button id="botonBorrar" class="btn btn-outline-danger" 
+                           <button id="botonBorrar" 
+                           (click)="borrar()"
+                           class="btn btn-outline-danger" 
                          >BORRAR</button>
                           </div>
                           <div class="p-2 bd-highlight">
-                               <button id="botonVaciar" class="btn btn-outline-info" 
+                               <button id="botonVaciar" 
+                               (click)="resetFormulario()"
+                               class="btn btn-outline-info" 
                              >VACIAR</button>
                               </div>
                               <div class="p-2 bd-highlight">
-                                   <button id="botonCancelar" class="btn btn-outline-primary" 
+                                   <button id="botonCancelar" 
+                                   (click)="cancelar()"
+                                   class="btn btn-outline-primary" 
                                  >CANCELAR</button>
                                   </div>
          </div>

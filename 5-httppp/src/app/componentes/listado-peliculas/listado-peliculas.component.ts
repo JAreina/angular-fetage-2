@@ -53,6 +53,6 @@ export class ListadoPeliculasComponent implements OnInit {
        //guardar objeto a modificar en localStorage
        localStorage.setItem("peliModificar",JSON.stringify(pelicula));
 
-        this.crearOModificarPeli();
+       this.router.navigate(["/formulario/",pelicula.id]);
   }
 }

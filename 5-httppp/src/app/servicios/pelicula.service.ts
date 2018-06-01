@@ -23,13 +23,13 @@ export class PeliculaService {
 	}
 
 	insertarPelicula(pelicula: Pelicula): Observable<any> {
-		return this.http.post(this.config.url + '/peliculas', pelicula);
+		return this.http.post(this.config.url + '/peliculas', pelicula,{responseType:'text'});
 	}
 	modificarPelicula(pelicula: Pelicula): Observable<any> {
-		return this.http.put(this.config.url + '/peliculas/' + pelicula.id, pelicula);
+		return this.http.put(this.config.url + '/peliculas/' + pelicula.id, pelicula,{responseType:'text'});
 	}
 
 	borrarPelicula(pelicula: Pelicula): Observable<any> {
-		return this.http.delete(this.config.url + '/peliculas/' + pelicula.id);
+		return this.http.delete(this.config.url + '/peliculas/' + pelicula.id,{responseType:'text'});
 	}
 }

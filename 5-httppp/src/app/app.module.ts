@@ -18,6 +18,7 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'formulario', component: FormularioPeliculasComponent },
+  { path: 'formulario/:id', component: FormularioPeliculasComponent },
   { path: 'listado', component: ListadoPeliculasComponent },
   
   { path: '*', component: AppComponent }
