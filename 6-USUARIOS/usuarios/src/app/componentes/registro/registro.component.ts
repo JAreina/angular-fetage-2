@@ -26,9 +26,11 @@ export class RegistroComponent implements OnInit {
     this.usuarioServ.registrar(this.usuario).subscribe(
                               data =>{
                                 console.log("guardado")
-                                this.router.navigate(['principal'])
+                                this.router.navigate(['condiciones'])
                           },error =>{
                                 console.log(error)
                           })
 }
+
+
 }

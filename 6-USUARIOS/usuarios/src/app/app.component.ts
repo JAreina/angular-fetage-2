@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SesionService } from './servicios/sesion.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+
+  constructor(private sesionServ:SesionService){
+    sesionServ.add("usuario",{correo:"pedro",pass:"passs"})
+    console.log(sesionServ.get("usuario"));
+  }
 }

@@ -1,3 +1,14 @@
-<p>
-  login works!
-</p>
+
+<h1>LOGIN</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="formulario">
+        <input type="text" [(ngModel)]="usuario.correo">
+        <input type="text" [(ngModel)]="usuario.pass">
+        <input type="button" value="LOGIN" (click)="login()">
+        <a class="nav-link" routerLink="registro">REGISTRARSE</a>
+      </div>
+    </div>
+  </div>
+</div>

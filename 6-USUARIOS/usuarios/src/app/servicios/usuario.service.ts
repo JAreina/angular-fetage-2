@@ -13,4 +13,8 @@ export class UsuarioService {
 		console.log(usuario.correo);
 		return this.http.get(`http://localhost:2000/usuarios/registro?correo=${usuario.correo}&pass=${usuario.pass}`);
 	}
+
+	login(usuario): Observable<any>{
+		return this.http.post(`http://localhost:2000/usuarios/login`,usuario);
+	}
 }

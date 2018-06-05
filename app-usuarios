@@ -21,3 +21,14 @@ app   --   cabecera
                     PAGINA 1
                     PAGINA 2
                     PAGINA 3
+
+
+******************
+
+NODE SERVIDOR 
+
+GET usuarios/credenciales?correo=xx&pass=ddd
+POST usuarios
+
+
+: usuariosRest, usuarioNegocio

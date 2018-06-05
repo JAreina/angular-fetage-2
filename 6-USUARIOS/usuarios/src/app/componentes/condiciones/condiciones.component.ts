@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-condiciones',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CondicionesComponent implements OnInit {
 
-  constructor() { }
+   public chequeado:boolean;
+
+  constructor(private router : Router) { }
 
   ngOnInit() {
+    this.chequeado = false;
   }
 
+   estaChequeado(){
+     this.chequeado = !this.chequeado;
+     console.log(this.chequeado)
+   }
+
+
+
+
+  aceptarCondiciones(){
+    console.log(this.chequeado)
+     if(this.chequeado){
+         this.router.navigate(['principal']);
+     }
+  }
 }

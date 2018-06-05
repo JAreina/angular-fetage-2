@@ -61,7 +61,7 @@ let usuario;
     static login(req,res, next){
         usuario = req.body;
         if(UsuarioNegocio.estaRegistrado(usuario)){
-            req.json("BIENBENIDA");
+            res.json("BIENBENIDA");
         }
           
     }
