@@ -1,14 +1,12 @@
 let express = require('express');
-
-
 let router = express.Router();
-
-router.get("/usuarios/credenciales",buscarPorLogin);
-
+const UsuarioNegocio = require('./usuariosNegocio');
 
 
-function buscarPorLogin(req,res,next){
-    res.send('USUARIOS CREDENCIALES ');
-}
+router.get("/usuarios/registro",UsuarioNegocio.buscarPorLogin);
+router.post("/usuarios/login",UsuarioNegocio.login);
+
+
+
 
 module.exports = router;
