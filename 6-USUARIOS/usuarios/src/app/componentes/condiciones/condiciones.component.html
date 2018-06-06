@@ -2,6 +2,17 @@
 <h1>CONDICIONES</h1>
 
 
-<input type="checkbox" [(ngModel)]="chequeado"
-(change)="estaChequeado()"> aceptar
-<input type="button" value="ok" (click)="aceptarCondiciones()">
+
+
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <input type="checkbox" 
+        [(ngModel)]="chequeado"
+        aria-label="Checkbox for following text input" (change)="estaChequeado()">
+      </div>
+    </div>
+    <button type="button" [disabled]="!chequeado" class="btn btn-outline-dark"
+    (click)="aceptarCondiciones()">ok</button>
+  </div>

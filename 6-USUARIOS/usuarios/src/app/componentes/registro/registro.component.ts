@@ -25,7 +25,7 @@ export class RegistroComponent implements OnInit {
     console.log("REGISTRA"+ this.usuario)
     this.usuarioServ.registrar(this.usuario).subscribe(
                               data =>{
-                                console.log("guardado")
+                                console.log("ir a condiciones ")
                                 this.router.navigate(['condiciones'])
                           },error =>{
                                 console.log(error)

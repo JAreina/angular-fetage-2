@@ -17,7 +17,7 @@ export class CondicionesComponent implements OnInit {
   }
 
    estaChequeado(){
-     this.chequeado = !this.chequeado;
+     this.chequeado = this.chequeado;
      console.log(this.chequeado)
    }
 
@@ -27,6 +27,11 @@ export class CondicionesComponent implements OnInit {
   aceptarCondiciones(){
     console.log(this.chequeado)
      if(this.chequeado){
+
+           // REGISTAR USUARIO 
+
+
+           // ENTRAR EN SU PAGINA
          this.router.navigate(['principal']);
      }
   }

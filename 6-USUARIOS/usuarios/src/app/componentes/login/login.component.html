@@ -1,14 +1,28 @@
 
-<h1>LOGIN</h1>
+
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <div id="formulario">
-        <input type="text" [(ngModel)]="usuario.correo">
-        <input type="text" [(ngModel)]="usuario.pass">
-        <input type="button" value="LOGIN" (click)="login()">
-        <a class="nav-link" routerLink="registro">REGISTRARSE</a>
+    <div class="col-sm-6 card">
+      <div id="formulario" class="card-body">
+        <div>{{mensaje}}</div>
+          <h1 class="card-title">LOGIN</h1>
+          <div class="input-group mb-3">
+          <div class="form-group">
+            
+              <input type="text" class="form-control" [(ngModel)]="usuario.correo">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="usuario.pass">
+          </div>
+          
+            
+          </div>
+          
+          <button type="submit"class="form-control"  
+          (click)="login()" class="btn btn-outline-dark">LOGIN</button>
+       
       </div>
+      <a  routerLink="registro">REGISTRARSE</a>
     </div>
   </div>
 </div>

@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
 export class UsuarioService {
 	constructor(private http: HttpClient) {}
 
-	registrar(usuario): Observable<any> {
-		console.log('servicio registrar ');
+	login(usuario): Observable<any> {
+		console.log('servicio login ');
 		console.log(usuario.correo);
-		return this.http.get(`http://localhost:2000/usuarios/registro?correo=${usuario.correo}&pass=${usuario.pass}`);
+		return this.http.get(`http://localhost:2000/usuarios/login?correo=${usuario.correo}&pass=${usuario.pass}`);
 	}
 
-	login(usuario): Observable<any>{
-		return this.http.post(`http://localhost:2000/usuarios/login`,usuario);
+	registrar(usuario): Observable<any>{
+		return this.http.post(`http://localhost:2000/usuarios/registro`,usuario, {responseType:'text'});
 	}
 }
