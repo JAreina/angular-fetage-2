@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    BrowserModule,
     CommonModule,
   
     RouterModule.forRoot(routes),
@@ -39,6 +41,8 @@ const routes: Routes = [
     MenuComponent,
     Pagina1Component,
     Pagina2Component,
-    Pagina3Component]
+    Pagina3Component],
+
+    bootstrap: [PrincipalComponent]
 })
 export class PrincipalModule { }

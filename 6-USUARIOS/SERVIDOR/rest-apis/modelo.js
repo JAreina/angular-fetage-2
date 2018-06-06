@@ -34,8 +34,10 @@ exports.registrar =(usuario)=>{
     
     return new Promise((resolve,reject)=>{
       
-      if(!usuario.correo || !usuario.pass){
+      if( (usuario.correo=='' || usuario.pass =='') 
+         || (!usuario.correo || !usuario.pass)){
           reject("CORREO Y PASSWORD OBLIGATORIOS")
+          return;
       }
       id++;
        usuario.id=id;

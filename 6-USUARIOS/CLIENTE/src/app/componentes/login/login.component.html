@@ -2,17 +2,17 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 card">
+    <div class="col-sm-7 card">
       <div id="formulario" class="card-body">
         <div>{{mensaje}}</div>
           <h1 class="card-title">LOGIN</h1>
           <div class="input-group mb-3">
           <div class="form-group">
             
-              <input type="text" class="form-control" [(ngModel)]="usuario.correo">
+              <input type="text" class="form-control" [(ngModel)]="usuario.correo" placeholder="correo">
           </div>
           <div class="form-group">
-              <input type="text" class="form-control" [(ngModel)]="usuario.pass">
+              <input type="password" class="form-control" [(ngModel)]="usuario.pass" placeholder="password">
           </div>
           
             

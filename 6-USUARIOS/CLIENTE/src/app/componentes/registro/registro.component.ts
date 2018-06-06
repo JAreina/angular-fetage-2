@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegistroComponent implements OnInit {
 
    usuario: Usuario;
+  mensaje: string;
 
   constructor(private usuarioServ: UsuarioService,
               private router : Router) { }
@@ -28,6 +29,7 @@ export class RegistroComponent implements OnInit {
                                 console.log("ir a condiciones ")
                                 this.router.navigate(['condiciones'])
                           },error =>{
+                            this.mensaje = error.error;
                                 console.log(error)
                           })
 }

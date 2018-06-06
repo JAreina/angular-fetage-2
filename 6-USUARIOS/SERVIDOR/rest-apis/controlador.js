@@ -36,7 +36,7 @@ const Usuario = require('./Usuario');
            })
            .catch((mal)=>{
             res.status(400);
-            res.send('NO REGISTRADO')
+            res.send(mal)
            })
         }
 }
