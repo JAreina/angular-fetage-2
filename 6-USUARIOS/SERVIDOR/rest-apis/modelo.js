@@ -6,44 +6,45 @@ arr.push(
     new Usuario("a@a.com","111"),
     new Usuario("b@b.com","222")
 )
+let id =3;
 
 exports.buscar = (correo,pass)=>{
-    if(typeof arr == 'undefined'){
+       if(typeof arr == 'undefined'){
         arr = [];
-   }
-           
-  
-   usuario = new Usuario(correo,pass);
-
- if(usuario){
-    //comprobar que este registrado
-       if(estaRegistrado(usuario)!=null){
-           return 'ya registrado'
-       }else{
-        
-           registrarUsuario(usuario);
-       }
- }
-}
-
-function registrarUsuario(usuario){
+      }
+     return new Promise((resolve,reject)=>{
+           let  usuario = new Usuario(correo,pass);
+            for(var i =0; i<arr.length; i++){
+              
+             if(arr[i].correo == usuario.correo && arr[i].pass == usuario.pass){
+                 console.log( arr[i].correo + " ESTA REGISTRADO ")
+                   resolve(arr[i]);
+                   return;
+             }
          
-    arr.push = usuario;
+         }
+         reject(null);
+        });
+  
+ 
+}
+
+exports.registrar =(usuario)=>{
+      
+    
+    return new Promise((resolve,reject)=>{
+      
+      if(!usuario.correo || !usuario.pass){
+          reject("CORREO Y PASSWORD OBLIGATORIOS")
+      }
+      id++;
+       usuario.id=id;
+        arr.push = usuario;
+        console.log(arr)
+        resolve("REGISTRADO")
+    })
    
-   console.log(`REGISTRADO: ${usuario.toString()}`);
-   console.log(arr)
-   return "registrado"
+
 }
 
 
-exports.estaRegistrado = (usu)=>{
-    for(var i =0; i<arr.length; i++){
-       // console.log( arr[i].correo + " ESTA REGISTRADO ")
-        if(arr[i].correo == usu.correo){
-            console.log( arr[i].correo + " ESTA REGISTRADO ")
-              return arr[i];
-        }
-
-    }
-    return null;   
-}

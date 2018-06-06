@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 
 const app = express();
 
-const router = require('./rest-apis/usuariosRest');
+const router = require('./rest-apis/router');
 
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
 
 	// req.path '
 	console.log(req.path);
-	console.log(req.url);
+	//console.log(req.url);
 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
 	// Request methods you wish to allow
@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.use(router);
+app.use('/',router);
 
 app.listen(2000, function() {
 	console.log('http://localhost:2000');
