@@ -5,6 +5,7 @@ const app = express();
 
 const router = require('./rest-apis/router');
 
+app.disable("x-powered-by");
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
 	// Website you wish to allow to connect

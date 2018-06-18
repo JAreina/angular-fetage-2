@@ -3,10 +3,15 @@ const Usuario = require('./Usuario');
 arr = [];
 
 arr.push(
-    new Usuario("a@a.com","111"),
-    new Usuario("b@b.com","222")
+    new Usuario(1,"a@a.com","111"),
+    new Usuario(2,"b@b.com","222")
 )
 let id =3;
+
+
+const conexion = require('./conexionMongo');
+const dbName = 'usuariosBD';
+
 
 exports.buscar = (correo,pass)=>{
        if(typeof arr == 'undefined'){
@@ -41,9 +46,24 @@ exports.registrar =(usuario)=>{
       }
       id++;
        usuario.id=id;
-        arr.push = usuario;
-        console.log(arr)
-        resolve("REGISTRADO")
+       console.log(conexion);
+
+       // guardar el registro en base datos 
+
+       conexion.then(
+           (err,db)=>{
+            const base = db.db(dbName);
+            base.collection("usuarios").insertOne(usuario,(err,r)=>{
+                console.log(r)
+                resolve("REGISTRADO")
+            })
+           }
+
+       ).catch();
+
+       // arr.push = usuario;
+        //console.log(arr)
+        
     })
    
 
