@@ -94,13 +94,34 @@ exports.modificar= (usuario )=>{
 }
 
 exports.borrar= (usuario )=>{
-    
+    let bd = conexion.getConexion();
+    let base = bd.db(dbName);
+
+   
+    // resultado es una PROMESA 
+   let resultado = base.collection("usuarios")
+                        .deleteOne({_id:mongo.ObjectId(usuario._id)},
+                               {$set: {"correo":usuario.correo, "pass":usuario.pass}})
+     console.log( "borrado : "+ resultado);
+    return resultado;
 }
 
 exports.listar= ()=>{
-    
+    let bd = conexion.getConexion();
+    let base = bd.db(dbName);
+    let cursor = base.collection("usuarios").find({}).limit(5);
+    console.log(cursor)
+    return cursor;
 }
 
 exports.buscarPorId= (usuario )=>{
-    
+    let bd = conexion.getConexion();
+    let base = bd.db(dbName);
+
+   
+    // resultado es una PROMESA 
+   let resultado = base.collection("usuarios")
+                        .findOne({_id:mongo.ObjectId(usuario._id)})
+            console.log( "buscar por id : "+ resultado);
+    return resultado;
 }

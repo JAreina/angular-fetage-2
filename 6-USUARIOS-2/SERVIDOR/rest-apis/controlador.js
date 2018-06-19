@@ -50,7 +50,7 @@ const Usuario = require('./Usuario');
            })
         }
 
-        static modificar(req,res,next){
+    static modificar(req,res,next){
             let  usuario = req.body;
             console.log(usuario)
        
@@ -68,7 +68,67 @@ const Usuario = require('./Usuario');
                })
            
         }
-}
+
+    static borrar(req,res,next){
+        let  usuario = req.body;
+        console.log(usuario)
+   
+        let respuesta = modelo.borrar(usuario)
+         console.log(respuesta)
+        respuesta
+           .then((bien)=>{
+               console.log(bien)
+            res.status(200);
+            res.json(bien);
+           })
+           .catch((mal)=>{
+            res.status(500);
+            res.send(mal)
+           })
+    }
+
+    static listar(req,res,next){
+       
+   
+        let respuesta = modelo.listar()
+         console.log(respuesta)
+
+         /*
+        respuesta
+           .then((bien)=>{
+               console.log(bien)
+            res.status(200);
+            res.json(bien);
+           })
+           .catch((mal)=>{
+            res.status(500);
+            res.send(mal)
+           })*/
+          
+    }
+
+    static buscarPorId(req,res,next){
+        let  usuario = req.body;
+        console.log(usuario)
+   
+        let respuesta = modelo.buscarPorId(usuario)
+         console.log(respuesta)
+        respuesta
+           .then((bien)=>{
+               console.log(bien)
+            res.status(200);
+            res.json(bien);
+           })
+           .catch((mal)=>{
+            res.status(500);
+            res.send(mal)
+           })
+    }
+
+
+
+
+    }
 
    
 
