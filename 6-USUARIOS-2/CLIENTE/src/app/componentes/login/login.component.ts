@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
          error =>{
            // credenciales incorrectas 
              this.mensaje= error.error;
-             console.log(error)
+            // console.log(error)
          }
        )
   }

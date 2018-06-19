@@ -10,7 +10,7 @@ export class UsuarioService {
 
 	login(usuario): Observable<any> {
 		console.log('servicio login ');
-		console.log(usuario.correo);
+		//console.log(usuario.correo);
 		return this.http.get(`http://localhost:2000/usuarios/login?correo=${usuario.correo}&pass=${usuario.pass}`);
 	}
 

@@ -1,7 +1,12 @@
 const express = require('express');
 var bodyParser = require('body-parser');
-
+const conexion = require('./rest-apis/conexionMongo')
 const app = express();
+
+
+// CONEXION A MONGO
+conexion.conectar();
+
 
 const router = require('./rest-apis/router');
 

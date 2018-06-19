@@ -10,28 +10,23 @@ let id =3;
 
 
 const conexion = require('./conexionMongo');
+const conexion1 = require('./miConexion');
 const dbName = 'usuariosBD';
 
 
+
+
+console.log(conexion1)
+
 exports.buscar = (correo,pass)=>{
-       if(typeof arr == 'undefined'){
-        arr = [];
-      }
-     return new Promise((resolve,reject)=>{
-           let  usuario = new Usuario(correo,pass);
-            for(var i =0; i<arr.length; i++){
-              
-             if(arr[i].correo == usuario.correo && arr[i].pass == usuario.pass){
-                 console.log( arr[i].correo + " ESTA REGISTRADO ")
-                   resolve(arr[i]);
-                   return;
-             }
-         
-         }
-         reject(null);
-        });
-  
- 
+     let bd = conexion.getConexion();
+     let base = bd.db(dbName);
+
+
+     // resultado es una PROMESA 
+    let resultado = base.collection("usuarios").findOne({correo:correo,pass:pass})
+      console.log( "BUSCADO : "+ resultado);
+     return resultado;
 }
 
 exports.registrar =(usuario)=>{
@@ -46,12 +41,12 @@ exports.registrar =(usuario)=>{
       }
       id++;
        usuario.id=id;
-       console.log(conexion);
+       //console.log(conexion1);
 
        // guardar el registro en base datos 
 
-       conexion.then(
-           (err,db)=>{
+       conexion1.then(
+           (db)=>{
             const base = db.db(dbName);
             base.collection("usuarios").insertOne(usuario,(err,r)=>{
                 console.log(r)
@@ -59,7 +54,10 @@ exports.registrar =(usuario)=>{
             })
            }
 
-       ).catch();
+       ).catch((err)=>{
+        reject("CORREO Y PASSWORD OBLIGATORIOS")
+           console.log(err)
+       });
 
        // arr.push = usuario;
         //console.log(arr)

@@ -10,14 +10,24 @@ const Usuario = require('./Usuario');
          
             let respuesta=  modelo.buscar(correo,pass)
               
+           console.log(respuesta + "CONTROLLADOR ---BUSCAR ")
+
+
             respuesta
                .then((bien)=>{
+                   console.log("CONTROLLADOR BUSCADO : "+bien)
+                   if( bien != null ){
                     res.status(200);
                     res.json(`REGISTRADO ${correo}: ${pass}`);
+                   }else {
+                       res.status(400);
+                       res.send("NO REGISTRADO");
+                   }
+                    
                })
                .catch((mal)=>{
-                    res.status(400);
-                    res.send("NO REGISTRADO");
+                   console.log("error    -- controlllador  buscar "+mal)
+                    res.sendStatus(500);
                })
     }
 
@@ -35,8 +45,8 @@ const Usuario = require('./Usuario');
             res.json(bien);
            })
            .catch((mal)=>{
-            res.status(400);
-            res.send(mal)
+            res.sendStatus(500);
+            //res.send(mal)
            })
         }
 }
