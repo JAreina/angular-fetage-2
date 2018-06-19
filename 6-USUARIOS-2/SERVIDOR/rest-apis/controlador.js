@@ -45,9 +45,28 @@ const Usuario = require('./Usuario');
             res.json(bien);
            })
            .catch((mal)=>{
-            res.sendStatus(500);
-            //res.send(mal)
+            res.status(500);
+            res.send(mal)
            })
+        }
+
+        static modificar(req,res,next){
+            let  usuario = req.body;
+            console.log(usuario)
+       
+            let respuesta = modelo.modificar(usuario)
+             console.log(respuesta)
+            respuesta
+               .then((bien)=>{
+                   console.log(bien)
+                res.status(200);
+                res.json(bien);
+               })
+               .catch((mal)=>{
+                res.status(500);
+                res.send(mal)
+               })
+           
         }
 }
 

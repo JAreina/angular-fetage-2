@@ -9,7 +9,7 @@ const url = 'mongodb://localhost:27017';
 
 
 let conexion = mongo.connect(url);
-	console.log(conexion)
+	//console.log(conexion)
 
 module.exports = conexion;
 

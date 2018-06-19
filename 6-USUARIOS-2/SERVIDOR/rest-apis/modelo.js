@@ -6,17 +6,17 @@ arr.push(
     new Usuario(1,"a@a.com","111"),
     new Usuario(2,"b@b.com","222")
 )
-let id =3;
+let id =0;
 
 
 const conexion = require('./conexionMongo');
 const conexion1 = require('./miConexion');
 const dbName = 'usuariosBD';
 
+const mongo = require("mongodb")
 
 
-
-console.log(conexion1)
+//console.log(conexion1)
 
 exports.buscar = (correo,pass)=>{
      let bd = conexion.getConexion();
@@ -40,23 +40,35 @@ exports.registrar =(usuario)=>{
           return;
       }
       id++;
-       usuario.id=id;
-       //console.log(conexion1);
-
+      usuario.id = id;
+       //BUSCAR ID MAYOR 
+      /*conexion1.then((db)=>{
+        const base = db.db(dbName);
+        let ide=0;
+        base.collection("usuarios").find({},{id:1})
+                    .sort(-1).limit(1).toArray(function(err, docs) {
+                        ide =docs[0];
+                        console.log(docs[0])
+                        usuario.id= ++ide;
+                        console.log("ID MAYOR "+ide);
+                    });
+       
+       
+      })*/
        // guardar el registro en base datos 
 
        conexion1.then(
            (db)=>{
             const base = db.db(dbName);
             base.collection("usuarios").insertOne(usuario,(err,r)=>{
-                console.log(r)
+                //console.log(r)
                 resolve("REGISTRADO")
             })
            }
 
        ).catch((err)=>{
         reject("CORREO Y PASSWORD OBLIGATORIOS")
-           console.log(err)
+           //console.log(err)
        });
 
        // arr.push = usuario;
@@ -68,3 +80,27 @@ exports.registrar =(usuario)=>{
 }
 
 
+exports.modificar= (usuario )=>{
+    let bd = conexion.getConexion();
+    let base = bd.db(dbName);
+
+   
+    // resultado es una PROMESA 
+   let resultado = base.collection("usuarios")
+                        .updateOne({_id:mongo.ObjectId(usuario._id)},
+                               {$set: {"correo":usuario.correo, "pass":usuario.pass}})
+     console.log( "modificado : "+ resultado);
+    return resultado;
+}
+
+exports.borrar= (usuario )=>{
+    
+}
+
+exports.listar= ()=>{
+    
+}
+
+exports.buscarPorId= (usuario )=>{
+    
+}
