@@ -15,19 +15,13 @@ const Usuario = require('./Usuario');
 
             respuesta
                .then((bien)=>{
-                   console.log("CONTROLLADOR BUSCADO : "+bien)
-                   if( bien != null ){
-                    res.status(200);
-                    res.json(`REGISTRADO ${correo}: ${pass}`);
-                   }else {
-                       res.status(400);
-                       res.send("NO REGISTRADO");
-                   }
-                    
+                 
+                    res.json(bien);
+                  
                })
                .catch((mal)=>{
                    console.log("error    -- controlllador  buscar "+mal)
-                    res.sendStatus(500);
+                    res.json(mal);
                })
     }
 
@@ -41,12 +35,12 @@ const Usuario = require('./Usuario');
 
         respuesta
            .then((bien)=>{
-            res.status(200);
+           //res.status(200);
             res.json(bien);
            })
            .catch((mal)=>{
-            res.status(500);
-            res.send(mal)
+            //res.status(500);
+            res.json(mal)
            })
         }
 
@@ -91,8 +85,8 @@ const Usuario = require('./Usuario');
        
    
         let respuesta = modelo.listar()
-        // console.log(respuesta)
-           // devuelve un cursor
+        
+           // devuelve una promesa 
 
         
         respuesta

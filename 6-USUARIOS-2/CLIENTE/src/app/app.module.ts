@@ -21,7 +21,12 @@ const routes: Routes = [
   { path: 'condiciones', component: CondicionesComponent },
   
 
-  { path: '*', component: AppComponent }
+  
+  /*{
+    path: 'principal',
+    loadChildren: './principal/principal.module#PrincipalModule'
+  },*/
+  { path: '**', component: LoginComponent }
 ];
 
 
@@ -31,7 +36,7 @@ const routes: Routes = [
     CabeceraComponent,
     LoginComponent,
     RegistroComponent,
-    CondicionesComponent,
+    CondicionesComponent
   
     
   ],

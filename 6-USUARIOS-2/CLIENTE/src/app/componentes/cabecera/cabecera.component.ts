@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-  public cabecera = "user app"
+  public cabecera = "USERRS"
   public noMostrar:boolean = false;
   constructor() { }
 

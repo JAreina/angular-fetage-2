@@ -3,10 +3,10 @@
 <div class="container">
   <div class="row">
     <div>{{mensaje}}</div>
-    <div class="col-sm-7 card" >
+    <div class="col-sm-12 card" >
       <div id="formulario" class="card-body">
-        <h1 class="card-title">REGISTRO</h1>
-        <div class="input-group mb-3">
+        <h1 class="card-title text-right">REGISTRO</h1>
+        <div class="col-sm-6">
         
           <div class="form-group">  
           <input type="text" class="form-control" [(ngModel)]="usuario.correo" placeholder="correo">
@@ -16,13 +16,13 @@
             <input type="password" class="form-control" [(ngModel)]="usuario.pass" placeholder="password">
           </div>
          
-         
+          <button type="submit" class="form-control"   (click)="registrar()" class="btn btn-outline-dark">REGISTRO</button>
         </div>
       
+        <a class="" routerLink="">LOGIN</a>
         
-        <button type="submit" class="form-control"   (click)="registrar()" class="btn btn-outline-dark">REGISTRO</button>
       </div>
-      <a class="" routerLink="">LOGIN</a>
+    
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
               private router : Router) { }
 
   ngOnInit() {
-    this.usuario = new Usuario(null,null);
+    this.usuario = new Usuario(null,null,null,null,null);
   }
 
 

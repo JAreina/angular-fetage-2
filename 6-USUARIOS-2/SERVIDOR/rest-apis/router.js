@@ -8,7 +8,7 @@ router.post("/usuarios/registro",Controlador.registrar);
 router.put("/usuarios/modificar",Controlador.modificar);
 router.delete("/usuarios/borrar",Controlador.borrar);
 router.get("/usuarios/listar",Controlador.listar);
-router.get("/usuarios/buscarPorId",Controlador.buscarPorId);
+router.post("/usuarios/buscarPorId",Controlador.buscarPorId);
 
 
 module.exports = router;
