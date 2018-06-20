@@ -109,8 +109,9 @@ exports.borrar= (usuario )=>{
 exports.listar= ()=>{
     let bd = conexion.getConexion();
     let base = bd.db(dbName);
-    let cursor = base.collection("usuarios").find({}).limit(5);
-    console.log(cursor)
+    let cursor = base.collection("usuarios").find({}).limit(5).toArray();
+    console.log("CURSOR"+ cursor)
+    
     return cursor;
 }
 

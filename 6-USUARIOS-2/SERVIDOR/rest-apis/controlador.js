@@ -91,9 +91,10 @@ const Usuario = require('./Usuario');
        
    
         let respuesta = modelo.listar()
-         console.log(respuesta)
+        // console.log(respuesta)
+           // devuelve un cursor
 
-         /*
+        
         respuesta
            .then((bien)=>{
                console.log(bien)
@@ -103,7 +104,7 @@ const Usuario = require('./Usuario');
            .catch((mal)=>{
             res.status(500);
             res.send(mal)
-           })*/
+           })
           
     }
 
