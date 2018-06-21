@@ -26,8 +26,9 @@ exports.buscar = (correo,pass)=>{
 
 
         // resultado consulta a mongo es una PROMESA 
-    let resultadoConsulta = base.collection("usuarios").findOne({correo:correo,pass:pass})
-        console.log( "BUSCADO : "+ resultado);
+    let resultadoConsulta = base.collection("usuarios")
+        .findOne({correo:correo,pass:pass})
+        console.log( "BUSCADO : "+ resultadoConsulta);
 
         /// 
         resultadoConsulta.then(
@@ -59,14 +60,14 @@ function insertar(usuario,resolve,reject){
         datos =>{
             console.log(datos)
             if(datos !=null){
-             resolve({status:200, mensaje: "REGISTRADO"})
+             resolve({status:200, mensaje: "REGISTRADO CORRECTAMENTE"})
             }else{
              resolve({status: 400, mensaje:"CORREO Y PASSWORD OBLIGATORIOS"})
             }
         
         }
     ).catch(err=>{
-           reject({status: 500, mensaje:"error del serrvidorr"})
+           reject({status: 500, mensaje:err})
     });
 
 }
@@ -93,6 +94,7 @@ exports.registrar =(usuario)=>{
         if(usuario._id != null){
             usuario._id = undefined;
         }
+        if(usuario.nombre == undefined) usuario.nombre = "";
 
 
           // COMPROBAR SI YA EXISTE EN MONGO EL USUARIO
@@ -181,4 +183,34 @@ exports.buscarPorId= (usuario )=>{
                         .findOne({_id:mongo.ObjectId(usuario._id)})
             console.log( "buscar por id : "+ resultado);
     return resultado;
+}
+
+
+exports.esLogin = (l)=>{
+    let promesa = new Promise ((resolve,reject)=>{
+        let bd = conexion.getConexion();
+        let base = bd.db(dbName);
+  console.log(l)
+
+        // resultado consulta a mongo es una PROMESA 
+    let resultadoConsulta = base.collection("usuarios").findOne({correo:l})
+        console.log( "BUSCADO : "+ resultadoConsulta);
+
+        /// 
+        resultadoConsulta.then(
+            (datos)=>{
+                 if(datos != null){
+                    resolve({status: 200, mensaje: "CORREO YA REGISTRADO"});
+                 }else{
+                     reject({status:404, mensaje: "CORREO NO REGISTRADO"})
+                 }
+                    
+            }
+        ).catch((err)=>{
+
+               reject({status: 500, mensaje: "error servidor"})
+        });
+   })
+ 
+     return promesa;
 }

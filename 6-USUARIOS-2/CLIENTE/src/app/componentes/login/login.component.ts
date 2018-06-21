@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
               private sesion : SesionService) { }
 
   ngOnInit() {
-    this.usuario = new Usuario(null,null,null,null,null);
+    this.usuario = new Usuario(null,null,null,null);
   }
   login(){
        this.usuarioServ.login(this.usuario).subscribe(

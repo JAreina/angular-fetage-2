@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Usuario } from '../modelos/Usuario';
 
 @Injectable({
 	providedIn: 'root'
@@ -16,5 +17,9 @@ export class UsuarioService {
 
 	registrar(usuario): Observable<any>{
 		return this.http.post(`http://localhost:2000/usuarios/registro`,usuario, {responseType:'text'});
+	}
+
+	esLogin(usuario:Usuario):Observable<any>{
+		return this.http.get(`http://localhost:2000/login/${usuario.correo}`);
 	}
 }

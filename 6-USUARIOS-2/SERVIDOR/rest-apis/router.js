@@ -9,6 +9,6 @@ router.put("/usuarios/modificar",Controlador.modificar);
 router.delete("/usuarios/borrar",Controlador.borrar);
 router.get("/usuarios/listar",Controlador.listar);
 router.post("/usuarios/buscarPorId",Controlador.buscarPorId);
-
+router.get("/login/:l",Controlador.esLogin);
 
 module.exports = router;

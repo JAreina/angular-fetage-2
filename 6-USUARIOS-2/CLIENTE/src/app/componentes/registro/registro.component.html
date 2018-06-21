@@ -8,15 +8,28 @@
         <h1 class="card-title text-right">REGISTRO</h1>
         <div class="col-sm-6">
         
+        <label >Nombre</label>
+            <div class="form-group">
+                <input type="text" class="form-control" 
+                [(ngModel)]="usuario.nombre" placeholder="nombre">
+              </div>
+
+              <label >Correo</label>
           <div class="form-group">  
-          <input type="text" class="form-control" [(ngModel)]="usuario.correo" placeholder="correo">
+              
+          <input type="text" 
+          (change)= "esLogin()"
+          class="form-control" [(ngModel)]="usuario.correo" placeholder="correo">
           </div>
           
+          <label >Password</label>
           <div class="form-group">
-            <input type="password" class="form-control" [(ngModel)]="usuario.pass" placeholder="password">
+            <input type="password" [class]="form-control" [(ngModel)]="usuario.pass" placeholder="password">
           </div>
          
-          <button type="submit" class="form-control"   (click)="registrar()" class="btn btn-outline-dark">REGISTRO</button>
+          <button 
+          [disabled]= "deshabilita"
+          type="submit" class="form-control"   (click)="registrar()" class="btn btn-outline-dark">REGISTRO</button>
         </div>
       
         <a class="" routerLink="">LOGIN</a>

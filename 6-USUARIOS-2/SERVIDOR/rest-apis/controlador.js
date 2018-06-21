@@ -121,7 +121,25 @@ const Usuario = require('./Usuario');
     }
 
 
+   static esLogin(req,res,next){
+    let  l = req.params.l;
+     
+        let respuesta=  modelo.esLogin(l)
+          
+       console.log(respuesta + "es login ")
 
+
+        respuesta
+           .then((bien)=>{
+             
+                res.json(bien);
+              
+           })
+           .catch((mal)=>{
+               console.log("error    --login existe "+mal)
+                res.json(mal);
+           })
+   }
 
     }
 
