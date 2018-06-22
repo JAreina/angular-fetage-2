@@ -2,7 +2,7 @@ const express = require('express');
 var bodyParser = require('body-parser');
 const conexion = require('./rest-apis/conexionMongo')
 const app = express();
-
+const basicAutenticacion = require('./rest-apis/basicAutenticacion')
 
 // CONEXION A MONGO
 conexion.conectar();
@@ -29,9 +29,33 @@ app.use(function(req, res, next) {
 	// Set to true if you need the website to include cookies in the requests sent
 	// to the API (e.g. in case you use sessions)
 	//res.setHeader('Access-Control-Allow-Credentials', false);
+	 //-------------------
+	 
+	 let metodo = req.method;
 
+	 if(metodo == "OPTIONS"){
+		 console.log("opciones")
+		 next();
+		 return;
+	 }
+	 // basic autorizacion
+	let promesa =  basicAutenticacion.basicAutenticacion(req,res,next)
+	  promesa
+	  .then(usuario =>{
+			console.log(usuario)
+
+			req.usuario = usuario.datos;
+			next();
+		
+			
+		
+		})
+		.catch(err=>{
+			console.log(err)
+			res.sendStatus(403)
+		})
 	// Pass to next layer of middleware
-	next();
+	
 });
 
 app.use('/',router);

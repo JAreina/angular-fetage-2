@@ -1,11 +1,11 @@
 const Usuario = require('./Usuario');
 //modelo 
-arr = [];
+/*arr = [];
 
 arr.push(
     new Usuario(1,"a@a.com","111"),
     new Usuario(2,"b@b.com","222")
-)
+)*/
 let id =0;
 
 
@@ -33,12 +33,13 @@ exports.buscar = (correo,pass)=>{
         /// 
         resultadoConsulta.then(
             (datos)=>{
-                 if(datos != null){
+                console.log("MODELO BUSCAR : "+datos)
+                 if(datos == null){
                     resolve({status: 200, datos: datos});
                  }else{
-                     reject({status:404, mensaje: "NO REGISTRADO"})
+                     resolve({status:404, mensaje: "NO REGISTRADO"})
                  }
-                    
+                 //resolve({status: 200, datos: datos});
             }
         ).catch((err)=>{
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../modelos/Usuario';
 
 @Injectable({
@@ -12,14 +12,30 @@ export class UsuarioService {
 	login(usuario): Observable<any> {
 		console.log('servicio login ');
 		//console.log(usuario.correo);
-		return this.http.get(`http://localhost:2000/usuarios/login?correo=${usuario.correo}&pass=${usuario.pass}`);
+
+          let header = new HttpHeaders({
+			Authorization: "Basic "+btoa(usuario.correo+":"+usuario.pass) 
+		  })
+
+
+
+		return this.http.get(`http://localhost:2000/usuarios/login`,
+	                       {headers:header});
 	}
 
 	registrar(usuario): Observable<any>{
-		return this.http.post(`http://localhost:2000/usuarios/registro`,usuario, {responseType:'text'});
+		let header = new HttpHeaders({
+			Authorization: "Basic "+btoa("registro") 
+		  })
+		return this.http.post(`http://localhost:2000/usuarios/registro`,usuario, 
+		                       {responseType:'text',headers:header});
 	}
 
 	esLogin(usuario:Usuario):Observable<any>{
-		return this.http.get(`http://localhost:2000/login/${usuario.correo}`);
+
+		let header = new HttpHeaders({
+			Authorization: "Basic "+btoa("hola") 
+		  })
+		return this.http.get(`http://localhost:2000/login/${usuario.correo}`,{headers:header});
 	}
 }
