@@ -29,8 +29,9 @@ export class LoginComponent implements OnInit {
                 console.log(data)
                 this.mensaje = data;
                // navegar a su pagina 
-               //if(this.mensaje == "BIENBENIDA")
+               if(data.status == 200)
                      this.router.navigate(['principal'])
+                else   this.mensaje = data.mensaje;
          },
          error =>{
            // credenciales incorrectas 
