@@ -34,7 +34,7 @@ exports.buscar = (correo,pass)=>{
         resultadoConsulta.then(
             (datos)=>{
                 console.log("MODELO BUSCAR : "+datos)
-                 if(datos == null){
+                 if(datos != null){
                     resolve({status: 200, datos: datos});
                  }else{
                      resolve({status:404, mensaje: "NO REGISTRADO"})
