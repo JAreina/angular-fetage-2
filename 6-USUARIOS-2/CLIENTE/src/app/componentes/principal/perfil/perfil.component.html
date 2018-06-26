@@ -1,5 +1,62 @@
 
 <app-menu></app-menu>
 <section>
-  perfil works!
+  
+
+<div class="container">
+  <div class="row">
+    <div>{{mensaje}}</div>
+    <div class="col-sm-12 card" >
+      <div id="formulario" class="card-body">
+        <h1 class="card-title text-right">MODIFICAR PERFIL</h1>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type=hidden class="form-control" 
+            [(ngModel)]="usuario._id" >
+          </div>
+        <label >* Nombre</label>
+            <div class="form-group">
+                <input type="text" class="form-control" 
+                [(ngModel)]="usuario.nombre" placeholder="nombre">
+              </div>
+
+              <label >* Correo</label>
+          <div class="form-group">  
+              
+          <input type="text" 
+          (change)= "esLogin()"
+          class="form-control" [(ngModel)]="usuario.correo" placeholder="correo">
+          </div>
+          
+          <label >* Password</label>
+          <div class="form-group">
+            <input type="password" [class]="form-control" [(ngModel)]="usuario.pass" placeholder="password">
+          </div>
+          <label >* Confirmar Password</label>
+          <div class="form-group">
+            <input type="password" [class]="form-control" [(ngModel)]="usuario.pass" placeholder="Confirmar password">
+          </div>
+
+
+          <label >Dirección</label>
+          <div class="form-group">
+            <input type="text" [class]="form-control" [(ngModel)]="usuario.direccion" placeholder="direccion">
+          </div>
+          <label >Teléfono</label>
+          <div class="form-group">
+            <input type="number" [class]="form-control" [(ngModel)]="usuario.telefono" placeholder="Teléfno">
+          </div>
+
+          <button 
+          [disabled]= "deshabilita"
+          type="submit" class="form-control"   (click)="modificar()" class="btn btn-outline-dark">MODIFICAR</button>
+        </div>
+      
+        
+        
+      </div>
+    
+    </div>
+  </div>
+</div>
 </section>

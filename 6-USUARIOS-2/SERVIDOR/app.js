@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
 	  .then(usuario =>{
 			console.log(usuario)
 
-			req.usuario = usuario.datos;
+			req.usuario = usuario;
 			next();
 		
 			

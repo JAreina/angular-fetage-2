@@ -8,13 +8,13 @@
         <h1 class="card-title text-right">REGISTRO</h1>
         <div class="col-sm-6">
         
-        <label >Nombre</label>
+        <label >* Nombre</label>
             <div class="form-group">
                 <input type="text" class="form-control" 
                 [(ngModel)]="usuario.nombre" placeholder="nombre">
               </div>
 
-              <label >Correo</label>
+              <label >* Correo</label>
           <div class="form-group">  
               
           <input type="text" 
@@ -22,11 +22,25 @@
           class="form-control" [(ngModel)]="usuario.correo" placeholder="correo">
           </div>
           
-          <label >Password</label>
+          <label >* Password</label>
           <div class="form-group">
             <input type="password" [class]="form-control" [(ngModel)]="usuario.pass" placeholder="password">
           </div>
-         
+          <label >* Confirmar Password</label>
+          <div class="form-group">
+            <input type="password" [class]="form-control" [(ngModel)]="usuario.pass" placeholder="Confirmar password">
+          </div>
+
+
+          <label >Dirección</label>
+          <div class="form-group">
+            <input type="text" [class]="form-control" [(ngModel)]="usuario.direccion" placeholder="direccion">
+          </div>
+          <label >Teléfono</label>
+          <div class="form-group">
+            <input type="number" [class]="form-control" [(ngModel)]="usuario.telefono" placeholder="Teléfno">
+          </div>
+
           <button 
           [disabled]= "deshabilita"
           type="submit" class="form-control"   (click)="registrar()" class="btn btn-outline-dark">REGISTRO</button>

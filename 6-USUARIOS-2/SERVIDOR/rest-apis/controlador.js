@@ -10,17 +10,18 @@ const Usuario = require('./Usuario');
          
             let respuesta=  modelo.buscar(correo,pass)
               
-           console.log(respuesta + "CONTROLLADOR ---BUSCAR ")
+           
 
 
             respuesta
                .then((bien)=>{
-                 
+                console.log(bien )
+                res.status(200)
                     res.json(bien);
                   
                })
                .catch((mal)=>{
-                   console.log("error    -- controlllador  buscar "+mal)
+                   res.status(500)
                     res.json(mal);
                })
     }
@@ -46,9 +47,12 @@ const Usuario = require('./Usuario');
 
     static modificar(req,res,next){
             let  usuario = req.body;
+            let usuarioAuth = req.usuario;
+            console.log("-------------- usuario aaaauth -------------------")
+            console.log(usuarioAuth)
             console.log(usuario)
        
-            let respuesta = modelo.modificar(usuario)
+            let respuesta = modelo.modificar(usuario,usuarioAuth)
              console.log(respuesta)
             respuesta
                .then((bien)=>{

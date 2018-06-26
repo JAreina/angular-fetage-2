@@ -19,13 +19,13 @@ export class LoginComponent implements OnInit {
               private sesion : SesionService) { }
 
   ngOnInit() {
-    this.usuario = new Usuario(null,null,null,null);
+    this.usuario = new Usuario(null,null,null,null,null,null,null);
   }
   login(){
        this.usuarioServ.login(this.usuario).subscribe(
          data =>{
                // añadir a sesion 
-                this.sesion.add("usuario",this.usuario);
+                this.sesion.add("usuario",data.datos);
                 console.log(data)
                 this.mensaje = data;
                // navegar a su pagina 

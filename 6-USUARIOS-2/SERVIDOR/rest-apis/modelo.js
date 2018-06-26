@@ -28,12 +28,15 @@ exports.buscar = (correo,pass)=>{
         // resultado consulta a mongo es una PROMESA 
     let resultadoConsulta = base.collection("usuarios")
         .findOne({correo:correo,pass:pass})
-        console.log( "BUSCADO : "+ resultadoConsulta);
+
+
+        console.log(resultadoConsulta);
 
         /// 
         resultadoConsulta.then(
             (datos)=>{
-                console.log("MODELO BUSCAR : "+datos)
+                console.log("BUSCAR  ------------------------------")
+                console.log(datos)
                  if(datos != null){
                     resolve({status: 200, datos: datos});
                  }else{
@@ -74,8 +77,6 @@ function insertar(usuario,resolve,reject){
 }
 
 
-
-
 exports.registrar =(usuario)=>{
       
     
@@ -98,40 +99,8 @@ exports.registrar =(usuario)=>{
         if(usuario.nombre == undefined) usuario.nombre = "";
 
 
-          // COMPROBAR SI YA EXISTE EN MONGO EL USUARIO
-       
-       
-       
-       /*   let siExiste = buscar(usuario.correo, usuario.pass);
-
-
-           siExiste.then(
-                    datos =>{
-                        if(datos != null){
-                            resolve({status:200, mensaje: "REGISTRADO"})
-                        }else {
-                            // insertarlo no existe
-                            console.log("no existe")
-                         insertar(usuario);
-                         resolve({status:200, mensaje: "insertado"})
-
-                        }
-                    }        
-                     
-           ).catch(
-                 error =>{
-                     
-                 }
-           )
-                
-*/
 
    insertar(usuario,resolve,reject)
-
-
-
-
-
 
     })// promesa 
    
@@ -139,18 +108,31 @@ exports.registrar =(usuario)=>{
 }
 
 
-exports.modificar= (usuario )=>{
+exports.modificar= (usuario ,usuarioAuth)=>{
     let bd = conexion.getConexion();
     let base = bd.db(dbName);
 
-   
-    // resultado es una PROMESA 
-   let resultado = base.collection("usuarios")
-                        .updateOne({_id:mongo.ObjectId(usuario._id)},
-                               {$set: {"correo":usuario.correo, "pass":usuario.pass}})
-     console.log( "modificado : "+ resultado);
-    return resultado;
-}
+    console.log("-------------- usuario auth -------------------")
+     console.log(usuarioAuth)
+    return new Promise((resolve, reject)=>{
+        base.collection("usuarios")
+                        .updateOne({_id: mongo.ObjectId(usuario._id)},
+                                   {$set: usuario}).then(
+                                             datos =>{
+                                                resolve({status: 200, datos: datos});
+                                             }
+                                   )
+                                   .catch(
+                                            err=>{
+                                                reject({status: 500, mensaje: "error r interno"}) 
+                                            }
+                                   )
+    
+    });
+
+    }
+
+
 
 exports.borrar= (usuario )=>{
     let bd = conexion.getConexion();
@@ -188,30 +170,42 @@ exports.buscarPorId= (usuario )=>{
 
 
 exports.esLogin = (l)=>{
+    let bd = conexion.getConexion();
+    let base = bd.db(dbName);
+
+
+  if(base.getCollectionInfos("usuarios")){
     let promesa = new Promise ((resolve,reject)=>{
-        let bd = conexion.getConexion();
-        let base = bd.db(dbName);
-  console.log(l)
+        
+        console.log(l)
+      
+              // resultado consulta a mongo es una PROMESA 
+          let resultadoConsulta = base.collection("usuarios").findOne({correo:l})
+              console.log( "BUSCADO : "+ resultadoConsulta);
+      
+              /// 
+              resultadoConsulta.then(
+                  (datos)=>{
+                       if(datos != null){
+                          resolve({status: 200, mensaje: "CORREO YA REGISTRADO"});
+                       }else{
+                           reject({status:404, mensaje: "CORREO NO REGISTRADO"})
+                       }
+                          
+                  }
+              ).catch((err)=>{
+      
+                     reject({status: 500, mensaje: "error servidor"})
+              });
+         })
+       
+           return promesa;
+  }else{
+     return new Promise(function(resolve,reject){
+        reject()
+    })
+  }
 
-        // resultado consulta a mongo es una PROMESA 
-    let resultadoConsulta = base.collection("usuarios").findOne({correo:l})
-        console.log( "BUSCADO : "+ resultadoConsulta);
 
-        /// 
-        resultadoConsulta.then(
-            (datos)=>{
-                 if(datos != null){
-                    resolve({status: 200, mensaje: "CORREO YA REGISTRADO"});
-                 }else{
-                     reject({status:404, mensaje: "CORREO NO REGISTRADO"})
-                 }
-                    
-            }
-        ).catch((err)=>{
-
-               reject({status: 500, mensaje: "error servidor"})
-        });
-   })
- 
-     return promesa;
+    
 }

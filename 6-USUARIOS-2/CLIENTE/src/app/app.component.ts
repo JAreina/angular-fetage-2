@@ -11,7 +11,7 @@ export class AppComponent {
 
 
   constructor(private sesionServ:SesionService){
-    this.sesionServ.add("usuario",{correo:"pedro",pass:"passs"})
+    this.sesionServ.add("usuario",{correo:"anonimo",pass:"anonimo"})
     //console.log(sesionServ.get("usuario"));
   }
 }
