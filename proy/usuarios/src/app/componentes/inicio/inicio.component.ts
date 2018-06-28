@@ -15,6 +15,7 @@ export class InicioComponent implements OnInit {
   constructor(private productoService:ProductoService) { }
 
   ngOnInit() {
+    this.listar();
   }
 
 

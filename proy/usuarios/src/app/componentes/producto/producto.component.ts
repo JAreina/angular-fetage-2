@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Producto } from '../../entidades/Producto';
 
 @Component({
@@ -9,7 +9,7 @@ import { Producto } from '../../entidades/Producto';
 export class ProductoComponent implements OnInit {
 
 
-  public  producto: Producto;
+  @Input() public  producto: Producto ;
   
 
   constructor() { }
