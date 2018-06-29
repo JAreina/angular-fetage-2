@@ -3,10 +3,11 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 producto">
-            <h1>{{producto.nombre}}</h1>
-            <p>{{producto.descripcion}}</p>
-            <p>{{producto.precio}}</p>
-            <input type="button" value="AÑADIR">
+            <h1>PRODUCTO: {{producto.nombre}}</h1>
+            <p>DESCRIPCION: {{producto.descripcion}}</p>
+            <p>PRECIO: {{producto.precio}}</p>
+            CANTIDAD: <input type="number" [(ngModel)]="cantidad" name="cantidad" id="cantidad">
+            <input type="button" value="AÑADIR" (click)="addProducto()">
         </div>
     </div>
 </div>

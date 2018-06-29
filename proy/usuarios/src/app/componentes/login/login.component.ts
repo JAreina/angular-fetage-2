@@ -3,6 +3,7 @@ import { Usuario } from '../../entidades/usuario';
 import { LoginService } from '../../servicios/login.service';
 import { Router } from '@angular/router';
 import { SesionService } from '../../servicios/sesion.service';
+import { Pedido } from '../../entidades/Pedido';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    let pedido = new Pedido();
+    this.sesionService.add("pedido", pedido);
   }
 
   public login(){
