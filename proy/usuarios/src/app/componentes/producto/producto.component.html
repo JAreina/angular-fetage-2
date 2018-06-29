@@ -4,9 +4,10 @@
     <div class="row">
         <div class="col-sm-12 producto">
             <h1>PRODUCTO: {{producto.nombre}}</h1>
+            <img [src]="producto.imagen" alt="producto">
             <p>DESCRIPCION: {{producto.descripcion}}</p>
             <p>PRECIO: {{producto.precio}}</p>
-            CANTIDAD: <input type="number" [(ngModel)]="cantidad" name="cantidad" id="cantidad">
+            CANTIDAD: <input class="col-sm-1" type="number" [(ngModel)]="cantidad" name="cantidad" id="cantidad">
             <input type="button" value="AÑADIR" (click)="addProducto()">
         </div>
     </div>

@@ -11,7 +11,9 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 
 let rutasPrincipal = [
-  { path : 'inicio',
+  { path : '',
+    component : InicioComponent }, 
+    { path : 'inicio',
     component : InicioComponent }, 
   { path : 'perfil',
     component : PerfilComponent }   

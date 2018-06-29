@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    let pedido = new Pedido();
-    this.sesionService.add("pedido", pedido);
+    
   }
 
   public login(){
