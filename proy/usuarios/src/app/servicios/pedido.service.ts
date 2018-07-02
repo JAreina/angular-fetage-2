@@ -26,12 +26,15 @@ export class PedidoService {
 		// recuperarpedido de la sesion
 		let pedido = this.sesionService.get('pedido');
 
-		pedido.addDetalle(detalle);
+    pedido.addDetalle(detalle);
+    console.log(pedido);
 	}
 
 	public eliminarDetalleDelPedido(detalle: Detalle) {
 		let pedido = this.sesionService.get('pedido');
 
-		pedido.eliminarDetalle(detalle);
+    pedido.eliminarDetalle(detalle);
+    
+
 	}
 }

@@ -5,7 +5,7 @@ export class Detalle {
 
     constructor(public cantidad  :number = undefined,
                 public precio    :number = null,
-                public fecha     :Date = new Date(),
+                public fecha     :string= null,
                 public producto  :Producto = null
                 
                 ){

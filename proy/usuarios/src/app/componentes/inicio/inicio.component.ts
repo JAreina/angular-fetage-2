@@ -16,10 +16,13 @@ export class InicioComponent implements OnInit {
 	public pedido: Pedido;
 	public detalle: Detalle;
 
-	constructor(private productoService: ProductoService, private sesionService: SesionService) {}
+	constructor(private productoService: ProductoService, 
+		private sesionService: SesionService) {
+			this.listar();
+		}
 
 	ngOnInit() {
-		this.listar();
+		
 		//  this.pedido=  this.sesionService.get("pedido");
 		//console.log(this.pedido)
 	}

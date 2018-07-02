@@ -16,7 +16,7 @@ let rutasPrincipal = [
     { path : 'inicio',
     component : InicioComponent }, 
   { path : 'perfil',
-    component : PerfilComponent }   
+    component : PerfilComponent } 
 ];
 
 let rutas = [
@@ -30,7 +30,7 @@ let rutas = [
     component : CondicionesComponent },
   { path : 'principal',
     component : PrincipalComponent,
-    children  : rutasPrincipal }      
+    children  : rutasPrincipal }     
 ];
 
 @NgModule({  

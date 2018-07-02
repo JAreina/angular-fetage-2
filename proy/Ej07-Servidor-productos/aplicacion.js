@@ -39,7 +39,7 @@ function arrancarExpress(){
             .then( usuario => {
                 console.log("AUTH " +usuario)
                 //guardamos el usuario en el request
-                request.usuario = usuario; 
+                request.usuario = usuario.usuario; 
                 next(); //tira pa'lante
             })
             .catch( error => {

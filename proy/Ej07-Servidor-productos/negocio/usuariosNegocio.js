@@ -20,13 +20,13 @@ exports.buscarPorLoginYPassword = function(login, pw){
     
     return new Promise( function( resolve, reject ){
         //let obj = new Usuario ()
-      Usuario.findOne({ login:login, pw:pw })
+      Usuario.findOne({ nombre:login, pw:pw })
       .then( datos => { 
           console.log("NO EXISTE EL USUARIO " +datos)
         if( datos!=null){
-            resolve(datos) 
+            resolve({status: 200, usuario: datos}) 
         } else {
-            resolve( { status:404, texto:'usuario no registrado' } );
+            reject( { status:404, texto:'usuario no registrado' } );
         }
     } )
     .catch( error => { 

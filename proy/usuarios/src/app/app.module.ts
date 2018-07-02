@@ -14,6 +14,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { AppRutasModule } from './app.rutas.module';
 import { ProductoComponent } from './componentes/producto/producto.component';
+import { CestaComponent } from './componentes/cesta/cesta.component';
 
 
 /**ng generate  component componentes/Producto --module=app.module.ts */
@@ -29,7 +30,8 @@ import { ProductoComponent } from './componentes/producto/producto.component';
     CabeceraComponent,
     InicioComponent,
     PerfilComponent,
-    ProductoComponent
+    ProductoComponent,
+    CestaComponent
   ],  
   imports: [
     BrowserModule,

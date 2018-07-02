@@ -7,8 +7,9 @@
             <img [src]="producto.imagen" alt="producto">
             <p>DESCRIPCION: {{producto.descripcion}}</p>
             <p>PRECIO: {{producto.precio}}</p>
-            CANTIDAD: <input class="col-sm-1" type="number" [(ngModel)]="cantidad" name="cantidad" id="cantidad">
-            <input type="button" value="AÑADIR" (click)="addProducto()">
+            CANTIDAD: <input class="col-sm-1" type="number" [(ngModel)]="detalle.cantidad" name="cantidad" id="cantidad">
+            <input class="btn btn-primary" type="button" value="AÑADIR" (click)="addProductoAlPedido()">
+            <input  class="btn btn-primary" type="button" value="ELIMINAR" (click)="eliminarProductoDelPedido()">
         </div>
     </div>
 </div>
