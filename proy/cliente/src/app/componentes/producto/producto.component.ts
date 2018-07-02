@@ -27,7 +27,7 @@ export class ProductoComponent implements OnInit {
                                     this.producto.precio,
                                   new Date().toLocaleDateString(),
                                    this.producto));
-
+               
                                    alert("AÑADIDO PRODUCTO "+this.producto.nombre);
   }
 
@@ -35,4 +35,6 @@ export class ProductoComponent implements OnInit {
   public eliminarProductoDelPedido(){
 
   }
+
+  
 }

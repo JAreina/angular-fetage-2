@@ -11,7 +11,7 @@ import { Detalle } from '../../entidades/Detalle';
 })
 export class InicioComponent implements OnInit {
 	public productos: Producto[] = [];
-	public categoria: String;
+	public categoria: string;
 	public mensaje: string;
 	public pedido: Pedido;
 	public detalle: Detalle;
@@ -34,8 +34,19 @@ export class InicioComponent implements OnInit {
 				this.productos = todos;
 			},
 			(error) => {
-				this.mensaje = 'Credenciales incorrectas';
+				this.mensaje = 'no hay productos';
 			}
 		);
+	}
+
+
+	// por categoria 
+	buscarProductos(): void{
+		this.productoService.listarPorCategoria(this.categoria)
+		.subscribe(
+			(productos)=>{this.productos = productos},
+			(err)=>{console.log(err)}
+			
+		)
 	}
 }

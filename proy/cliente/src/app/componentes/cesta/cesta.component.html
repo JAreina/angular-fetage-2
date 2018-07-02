@@ -1,3 +1,17 @@
-<p>
-  cesta works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12 producto">
+        <h1>CESTA</h1>
+          <h1>Pedido: </h1>
+          
+          <div>
+              <div *ngFor="let a of pedido.getDetalles()">
+               
+              {{a.producto | json}}
+            
+              </div>
+            </div>     
+         
+      </div>
+  </div>
+</div>

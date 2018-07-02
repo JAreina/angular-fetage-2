@@ -9,6 +9,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { CestaComponent } from './componentes/cesta/cesta.component';
 
 let rutasPrincipal = [
   { path : '',
@@ -17,6 +18,9 @@ let rutasPrincipal = [
     component : InicioComponent }, 
   { path : 'perfil',
     component : PerfilComponent } 
+    , 
+  { path : 'cesta',
+    component : CestaComponent } 
 ];
 
 let rutas = [

@@ -20,7 +20,7 @@ exports.buscarPorLoginYPassword = function(login, pw){
     
     return new Promise( function( resolve, reject ){
         //let obj = new Usuario ()
-      Usuario.findOne({ nombre:login, pw:pw })
+      Usuario.findOne({ login:login, pw:pw })
       .then( datos => { 
           console.log("NO EXISTE EL USUARIO " +datos)
         if( datos!=null){
@@ -140,8 +140,25 @@ exports.modificar = function(usuarioAModificar, usuarioQueModifica){
         });       
     }
 
-    usuarioAModificar._id = mongo.ObjectID(usuarioAModificar._id);
     
+    
+
+
+    return new Promise(function(resolve,reject){
+        Usuario.findByIdAndUpdate(usuarioAModificar._id,usuarioAModificar)
+        .then(
+            rs =>{
+                resolve( { status: 200, texto:'Usuario modificado' });
+            }
+        ).catch(error => { 
+            reject({ status: 500, texto: 'error servidor' });
+        });
+    })
+
+
+
+    /*
+    usuarioAModificar._id = mongo.ObjectID(usuarioAModificar._id);
     return new Promise( function(resolve, reject){
         let bbdd = mongoDBUtil.getConexion();
         bbdd.collection("usuarios")
@@ -149,8 +166,15 @@ exports.modificar = function(usuarioAModificar, usuarioQueModifica){
                         { $set: usuarioAModificar } )
         .then( rs => resolve(rs))
         .catch( error => reject( { status: 500, texto: 'Fostión' }));
-    });
+    });*/
 }
+
+
+
+
+
+
+
 
 exports.borrar = function(usuario){
     let bbdd = mongoDBUtil.getConexion();

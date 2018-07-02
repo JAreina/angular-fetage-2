@@ -1,12 +1,18 @@
 
 
-
+<input type="search" name="buscar" [(ngModel)]="categoria" id="buscar">
+<input type="button" value="BUSCAR"  (click)="buscarProductos()">
 <div>
   <div *ngFor="let a of productos.productos">
    
     <app-producto [producto]=a></app-producto> 
 
   </div>
+</div>
+
+
+<div *ngIf= "productos.productos.length == 0">
+  <p>NO HAY RESUTADO PARA LA BÚSQUEDA</p>
 </div>
 
 

@@ -20,7 +20,8 @@ export class ProductoService {
   return this.http.get(this.cfg.url+"/productos",{headers: cabeceras});
  }
 
- listarPorCAtegoria(){
-
+ listarPorCategoria(categoria:string): Observable<any>{
+  let cabeceras : HttpHeaders= this.loginService.getCabeceraAuth();
+  return this.http.get(this.cfg.url+"/productos/categorias/"+categoria,{headers: cabeceras});
  }
 }

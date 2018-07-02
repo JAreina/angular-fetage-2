@@ -37,4 +37,19 @@ export class PedidoService {
     
 
 	}
+	public getPedido(){
+		
+		return this.sesionService.get('pedido');
+	}
+
+
+
+
+	insertarPedidoEnBD(): Observable<any>{
+		let pedido = this.sesionService.get('pedido');
+
+		let cabeceras : HttpHeaders= this.loginService.getCabeceraAuth();
+  return this.http.post(this.cfg.url+"/pedido",pedido,
+                             {headers: cabeceras});
+	}
 }

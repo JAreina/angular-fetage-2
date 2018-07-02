@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PedidoService } from '../../servicios/pedido.service';
+import { Pedido } from '../../entidades/Pedido';
 
 @Component({
   selector: 'app-cesta',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CestaComponent implements OnInit {
 
-  constructor() { }
+  public pedido : Pedido;
+  
+  constructor(private pedidoService: PedidoService) { 
+
+
+    this.pedido = pedidoService.getPedido();
+  }
 
   ngOnInit() {
   }
+
+
 
 }
