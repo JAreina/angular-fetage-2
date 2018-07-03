@@ -21,5 +21,14 @@ export class CestaComponent implements OnInit {
   }
 
 
+   calcularTotalPedido(){
+     let total= 0;
+     for (let i =0; i<this.pedido.detalle.length; i++){
+       total += this.pedido.detalle[i].cantidad * this.pedido.detalle[i].precio;
+     }
+     this.pedido.total = total.toString();
+     return total;
+   }
+
 
 }

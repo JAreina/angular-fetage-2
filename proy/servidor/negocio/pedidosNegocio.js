@@ -1,17 +1,17 @@
 let Pedido = require("../entidades/pedido.js").Pedido;
 
 
-exports.insertar = function(pedido){
+exports.insertar = function(pedido,usuario){
 
-    /*if( typeof pedido._id != 'undefined' ){
+    if( pedido.usuario._id != usuario._id ){
 
          return new Promise(function(resolve,reject){
-            reject( { status: 400, texto: 'No se puede insertar con _id' });
+            reject( { status: 403, texto: 'USUARIO NO VALIDO' });
          })
            
-    }*/
+    }
 
-    if ( !pedido.codigo || pedido.codigo.trim()=='' ||
+    if ( 
          !pedido.direccion  || pedido.direccion.trim()==''
           ){
 
@@ -24,6 +24,9 @@ exports.insertar = function(pedido){
      pedido = new Pedido(pedido);
 
     // devuelve promesa 
+  // generar codigo en servidor 
+       pedido.codigo = "PED-"+Math.round(Math.random()*10000);
+       pedido.total = calcularTotalPedido(pedido);
 
 
     return new Promise(function(resolve,reject){
@@ -40,10 +43,24 @@ exports.insertar = function(pedido){
   
 }
 
+function calcularTotalPedido(pedido){
+    let total= 0;
+    for (let i =0; i< pedido.detalle.length; i++){
+      total += pedido.detalle[i].cantidad * pedido.detalle[i].precio;
+    }
+    
+    return total;
+  }
 
-exports.listarPedidosPorUsuario = (usuario)=>{
+exports.listarPedidosPorUsuario = (usuarioId,usuario)=>{
+
+    if(id != usuario._id){
+        return new Promise(function(resolve,reject){
+            reject({ status: 403, texto: 'SOLO LISTAR TUS PEDIDOS' });
+        });
+    }
 return new Promise(function(resolve,reject){
-  pedido.find({"usuario": usuario})
+  Pedido.find({"usuario._id": usuarioId})
   .then(pedidos =>{
       resolve({status: 200, pedidos: pedidos})
   })

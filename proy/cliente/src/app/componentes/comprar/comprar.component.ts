@@ -42,8 +42,8 @@ export class ComprarComponent implements OnInit {
      this.pedidoService.insertarPedidoEnBD().subscribe(
        insertadoPedido =>{
              console.log("GUARDADO PEDIDO"+insertadoPedido)
-             this.sesionService.add("pedido",{}); // vaciar pedido
-             this.router.navigate(['inicio']);
+             this.sesionService.add("pedido",new Pedido()); // vaciar pedido
+             this.router.navigate(['/principal/inicio']);
        }, 
        error =>{
               console.log(error )

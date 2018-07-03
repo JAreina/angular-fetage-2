@@ -5,7 +5,7 @@ let router = express.Router();
 
 
 router.post('/pedido', insertar)
-       .get('/pedidos/usuarios/usuario',listarPedidosPorUsuario)
+       .get('/pedidos/usuarios/:id',listarPedidosPorUsuario)
        .get('/pedidos/pedido/:id',listarPedidoPorId)
 
 
@@ -22,7 +22,9 @@ exports.router = router;
 
 function insertar(request, response){
     let pedido = request.body;
-    negocioPedidos.insertar(pedido)
+    let usuario = request.usuario;
+    console.log(usuario + "..............................usuario ")
+    negocioPedidos.insertar(pedido,usuario)
     .then( rs => {
         response.json(rs);
     })
@@ -35,8 +37,8 @@ function insertar(request, response){
 function listarPedidosPorUsuario(request,response){
 
 
-    let usuario = request.body.usuario;
-    negocioPedidos.listarPedidosPorUsuario(usuario)
+    let usuarioId = request.params.id;
+    negocioPedidos.listarPedidosPorUsuario(usuarioId,request.usuario)
     .then(lista=>{
         response.json(lista);
     })

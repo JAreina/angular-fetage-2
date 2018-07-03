@@ -12,28 +12,30 @@ import { SesionService } from './sesion.service';
 	providedIn: 'root'
 })
 export class PedidoService {
+	pedido: Pedido;
+
 	constructor(
 		private http: HttpClient,
 		private cfg: ConfiguracionService,
 		private loginService: LoginService,
 		private sesionService: SesionService
 	) {
-		let pedido = new Pedido();
-		this.sesionService.add('pedido', pedido);
+		 this.pedido = new Pedido();
+		this.sesionService.add('pedido', this.pedido);
 	}
 
 	addDetalle(detalle: Detalle) {
 		// recuperarpedido de la sesion
-		let pedido = this.sesionService.get('pedido');
+		 this.pedido = this.sesionService.get('pedido');
 
-    pedido.addDetalle(detalle);
-    console.log(pedido);
+         this.pedido.addDetalle(detalle);
+          console.log(this.pedido);
 	}
 
 	public eliminarDetalleDelPedido(detalle: Detalle) {
-		let pedido = this.sesionService.get('pedido');
+	    this.pedido = this.sesionService.get('pedido');
 
-    pedido.eliminarDetalle(detalle);
+         this.pedido.eliminarDetalle(detalle);
     
 
 	}
@@ -46,10 +48,10 @@ export class PedidoService {
 
 
 	insertarPedidoEnBD(): Observable<any>{
-		let pedido = this.sesionService.get('pedido');
+		this.pedido = this.sesionService.get('pedido');
 
 		let cabeceras : HttpHeaders= this.loginService.getCabeceraAuth();
-  return this.http.post(this.cfg.url+"/pedido",pedido,
-                             {headers: cabeceras});
+  return this.http.post(this.cfg.url+"/pedido",this.pedido,
+                             {responseType: "text",headers: cabeceras});
 	}
 }
