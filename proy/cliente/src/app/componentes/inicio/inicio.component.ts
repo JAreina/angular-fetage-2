@@ -10,7 +10,7 @@ import { Detalle } from '../../entidades/Detalle';
 	styleUrls: [ './inicio.component.css' ]
 })
 export class InicioComponent implements OnInit {
-	public productos: Producto[] = [];
+	public productos: Producto[];
 	public categoria: string;
 	public mensaje: string;
 	public pedido: Pedido;
@@ -18,6 +18,7 @@ export class InicioComponent implements OnInit {
 
 	constructor(private productoService: ProductoService, 
 		private sesionService: SesionService) {
+			this.productos = [];
 			this.listar();
 		}
 

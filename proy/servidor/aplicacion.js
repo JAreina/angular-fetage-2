@@ -2,6 +2,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let usuariosRest = require('./rest-apis/usuariosRest.js');
 let productosRest = require('./rest-apis/productosRest.js');
+let pedidosRest = require('./rest-apis/pedidosRest.js');
 let mongooseDBUtil = require("./util/mongooseDBUtil.js");
 let authUtil = require("./util/autenticacionUtil");
 let atob = require("atob");
@@ -51,6 +52,7 @@ function arrancarExpress(){
         app.use(bodyParser.json());
         app.use('/', usuariosRest.router);
         app.use('/', productosRest.router);
+        app.use('/', pedidosRest.router);
         app.listen(8000, function(){ 
             console.log('Esperando peticiones...');
         });

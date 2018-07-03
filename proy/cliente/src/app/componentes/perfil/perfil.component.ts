@@ -11,7 +11,8 @@ import { UsuariosService } from '../../servicios/usuarios.service';
 export class PerfilComponent implements OnInit {
 
   public usuario:Usuario;
-
+  public mensaje: string = "";
+  
   constructor(private sesionService:SesionService,
               private usuariosService:UsuariosService) {
     this.usuario = sesionService.get("usuario");

@@ -10,7 +10,8 @@ let esquemaUsuario = new Esquema({
     mail: String,
     direccion: String,
     telefono: String,
-    idioma: String
+    idioma: String,
+    tc: String
 })
 
 // obtener modelo

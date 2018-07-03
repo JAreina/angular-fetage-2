@@ -1,0 +1,31 @@
+<h1>comprar</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <p>FECHA: {{fecha}}</p>
+      <div>
+          DIRECCION: <input type="text" 
+          [(ngModel)]="pedido.direccion" 
+          name="direccion" 
+          id="direccion">
+      </div>
+     <div>
+        TC: <input type="text" 
+             [(ngModel)]="tc" 
+             name="tc" 
+             id="tc">
+     </div>
+     <div>
+        <input type="button" 
+        value="COMPRAR" 
+        (click)="comprar()">
+     </div> 
+      
+    </div>
+  </div>
+</div>
+
+<h2>PEDIDO : </h2>
+{{this.pedido | json}}

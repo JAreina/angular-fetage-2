@@ -8,7 +8,8 @@ export class Usuario {
                 public idioma    :string = null,
                 public mail      :string = null,
                 public telefono  :string = null,
-                public direccion :string = null){
+                public direccion :string = null,
+                 public tc : string = null){
     }
 
 }

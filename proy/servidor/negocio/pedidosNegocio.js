@@ -1,4 +1,4 @@
-let pedido = require("../entidades/pedido.js").pedido;
+let Pedido = require("../entidades/pedido.js").Pedido;
 
 
 exports.insertar = function(pedido){
